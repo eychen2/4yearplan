@@ -9,7 +9,7 @@ const Form = ({setInputText, inputText,elements,setElements, count, setCount}) =
         e.preventDefault();
         setCount(count+1);
         console.log(elements);
-        setElements([...elements, {id: count, type:'input',data: {label: inputText},position:{x:0,y:0}}]);
+        setElements([...elements, {id: count.toString(), type:'input',data: {label: inputText},position:{x:0,y:0}}]);
         setInputText("");
     };
     return(
