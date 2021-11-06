@@ -7,11 +7,18 @@ const initialElements=[{id: '1', type: 'input',data:{label: 'Node'},position:{x:
 const App = () => {
 const [elements,setElements]=useState(initialElements);
 const [inputText,setInputText] = useState("");
+const handleNodeMouseEnter = (event,node) => {
+}
+const handleNodeMouseLeave = (event,node) => {
+  
+}
   return (
       <div className="App">
-        <Form setInputText={setInputText} inputText={inputText} elements={elements} setElements={setElements} count={count} setCount={setCount}/>
+        <Form setInputText={setInputText} inputText={inputText} elements={elements} setElements={setElements}/>
         <div style={{height: 700}}>
-              <ReactFlow elements={elements} > <Controls/> </ReactFlow>
+              <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave}> 
+              <Controls/> 
+              </ReactFlow>
         </div>
       </div>
   );
