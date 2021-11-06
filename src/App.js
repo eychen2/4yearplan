@@ -7,9 +7,6 @@ const initialElements=[{id: '1', type: 'input',data:{label: 'Node'},position:{x:
 const App = () => {
 const [elements,setElements]=useState(initialElements);
 const [inputText,setInputText] = useState("");
-const [count,setCount] = useState(()=>{
-    return 2;
-  });
   return (
       <div className="App">
         <Form setInputText={setInputText} inputText={inputText} elements={elements} setElements={setElements} count={count} setCount={setCount}/>
