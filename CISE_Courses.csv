@@ -1,0 +1,4 @@
+CourseCode,Name,GradingScheme,Credits,Description,Prerequisites,YearRequirement
+MAC1147,Precalculus Algebra and Trigonometry,Letter Grade,4,"College algebra, functions, coordinate geometry, exponential and logarithmic functions, and trigonometry. Fast-paced review of algebra and trigonometry to prepare for calculus. Assumes prior knowledge of intermediate algebra (Algebra 2) and trigonometry. (M)",-,-
+CAP3020,Theory and Practice of Multimedia Production,Letter Grade,3,Combines the traditional media production pipeline and software engineering processes to synthesize an approach geared for the production of works incorporating both artistic and computational elements.,CAP3027,-
+CAP3027,Introduction to Digital Arts and Sciences,Letter Grade,3,Synergy between art and computing through a programming-oriented exploration of fundamental concepts in multimedia.,COP3504/COP3503,-
