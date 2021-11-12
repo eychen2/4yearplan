@@ -8,7 +8,7 @@ const Form = ({setInputText, inputText,elements,setElements, count, setCount}) =
     const addNode = (e) => {
         e.preventDefault();
         console.log(elements);
-        setElements([...elements, {id: inputText, type:'input',data: {label: inputText},position:{x:0,y:0}}]);
+        setElements([...elements, {id: inputText, type:'input',data: {label: inputText},position:{x:100,y:0}}]);
         setInputText("");
     };
     return(
