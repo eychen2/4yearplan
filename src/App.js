@@ -9,13 +9,16 @@ const App = () => {
 const [elements,setElements]=useState(initialElements);
 const [inputText,setInputText] = useState("");
 const handleNodeMouseEnter = (event,node) => {
-  setElements(highlightnodes(elements));
-  console.log(node.id)
+  var index = CISE_Courses.findIndex(x=> x.code===node.id)
+  var prereqs= CISE_Courses[index].preReq
+  setElements(highlightnodes(elements,prereqs));
 }
 const handleNodeMouseLeave = (event,node) => {
+  var index = CISE_Courses.findIndex(x=> x.code===node.id)
+  var prereqs= CISE_Courses[index].preReq
+  setElements(highlightnodes(elements,prereqs))
 }
 const handleNodeDragStop = (event, node) => {
-  console.log(node.position)
   var index = elements.findIndex(x=> x.id===node.id)
   elements[index].position=node.position
 }
