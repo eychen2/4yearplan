@@ -122,7 +122,7 @@ const CISE_Courses = [
         name: "Data Structures and Algorithm",
         credit: 3,
         description: "Algorithm development using pseudo languages, basic program structures, program design techniques, storage and manipulation of basic data structures like arrays, stacks, queues, sorting and searching and string processing. Linked linear lists. Trees and multilinked structures. (M)",
-        preReqs: ["MAC 2312", "COP 3503C"],
+        preReqs: ["MAC 2312", "COP 3503C", "COT 3100"],
         yearReq: "-"
     },
     {
@@ -207,7 +207,7 @@ const CISE_Courses = [
     }
 ];
 
-const initialElements=[{id: '1', type: 'input',data:{label: CISE_Courses.at(0)},position:{x:0,y:0}}]
+const initialElements=[{id: CISE_Courses.at(0).code, type: 'input',data:{label: CISE_Courses.at(0).code},position:{x:0,y:0}}]
 const App = () => {
 const [elements,setElements]=useState(initialElements);
 const [inputText,setInputText] = useState("");
@@ -215,7 +215,7 @@ const handleNodeMouseEnter = (event,node) => {
   var index = CISE_Courses.findIndex(x=> x.code===node.id)
   if(index!==-1)
   {
-    var prereqs= CISE_Courses[index].preReq
+    var prereqs= CISE_Courses[index].preReqs
     setElements(highlightnodes(elements,prereqs));
   }
 }
@@ -223,7 +223,7 @@ const handleNodeMouseLeave = (event,node) => {
   var index = CISE_Courses.findIndex(x=> x.code===node.id)
   if(index!==-1)
   {
-    var prereqs= CISE_Courses[index].preReq
+    var prereqs= CISE_Courses[index].preReqs
     setElements(highlightnodes(elements,prereqs));
   }
 }
