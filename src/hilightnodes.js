@@ -5,9 +5,8 @@ export default function highlightnodes(elements, prereqs)
         if(e.id.slice(-1) === '_')
         {
             return{...e,id: e.id.substr(0,e.id.length-1), style: {background: "white"}}
-            
         }
-        else if(prereqs.indexOf(e.id)!==-1)
+        else if(prereqs.has(e.id))
         {
             return{...e, id: e.id+'_', style: {background: "#166DBA", color: "white"}};
         }
@@ -15,6 +14,7 @@ export default function highlightnodes(elements, prereqs)
         {
             return{...e}
         }
+
     })
     return newElements;
 }

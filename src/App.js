@@ -207,7 +207,7 @@ const CISE_Courses = [
     }
 ];
 
-const initialElements=[{id: CISE_Courses.at(0).code, type: 'input',data:{label: CISE_Courses.at(0).code},position:{x:0,y:0}}]
+const initialElements=[{id: 'MAC 2311', type: 'input',data:{label: 'MAC 2311'},position:{x:0,y:0}}]
 const App = () => {
 const [elements,setElements]=useState(initialElements);
 const [inputText,setInputText] = useState("");
@@ -215,7 +215,17 @@ const handleNodeMouseEnter = (event,node) => {
   var index = CISE_Courses.findIndex(x=> x.code===node.id)
   if(index!==-1)
   {
-    var prereqs= CISE_Courses[index].preReqs
+    let temp= CISE_Courses[index].preReqs.slice(0)
+    let prereqs = new Set(temp)
+    while(temp.length)
+    {
+        let temp2=temp.pop()
+        let next = CISE_Courses[CISE_Courses.findIndex(x=> x.code===temp2)].preReqs
+        next.forEach(element=> prereqs.add(element))
+        temp.concat(temp, next)
+        
+    }
+    console.log(prereqs)
     setElements(highlightnodes(elements,prereqs));
   }
 }
@@ -223,7 +233,7 @@ const handleNodeMouseLeave = (event,node) => {
   var index = CISE_Courses.findIndex(x=> x.code===node.id)
   if(index!==-1)
   {
-    var prereqs= CISE_Courses[index].preReqs
+    var prereqs= new Set(CISE_Courses[index].preReqs)
     setElements(highlightnodes(elements,prereqs));
   }
 }
