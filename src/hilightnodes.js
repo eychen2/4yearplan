@@ -5,9 +5,9 @@ export default function highlightnodes(elements, prereqs)
         if(e.id.length === 8)
         {
             console.log(e.id)
-            return{...e,id: e.id.susbstr(0,7), style: {background: "white"}}
+            return{...e,id: e.id.substr(0,7), style: {background: "white"}}
         }
-        else if(prereqs.indexOf(e)!==-1)
+        else if(prereqs.indexOf(e.id)!==-1)
         {
             console.log(e.id)
             return{...e, id: e.id+'_', style: {background: "#166DBA", color: "white"}};
