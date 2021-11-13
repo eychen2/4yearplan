@@ -6,6 +6,9 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "csv-parser": "^3.0.0",
+    "csvtojson": "^2.0.10",
+    "papaparse": "^5.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-flow-renderer": "^9.6.9",
@@ -35,5 +38,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "csv-loader": "^3.0.3",
+    "file-loader": "^6.2.0"
   }
 }
