@@ -14,7 +14,7 @@ const Form = ({setInputText, inputText,elements,setElements, count, setCount}) =
     return(
         <form>
             <input value={inputText} onChange={inputTextHandler} type="text" className="appInput" placeholder="Add Class" />
-            <button onClick={addNode} className="submitButton" type="submit" > Search </button>
+            <button onClick={addNode} className="submitButton" type="submit" > Add </button>
         </form>
     )
 }

@@ -1,18 +1,17 @@
 import {} from "react-flow-renderer"
-export default function highlightnodes(elements)
+export default function highlightnodes(elements, prereqs)
 {
     const newElements = elements.map((e) => {
-        if(e.id==='1')
+        if(e.id.length === 8)
         {
-            console.log(e.position)
-            return{...e,position: e.position, id: '2',data: {label: 'test'}};
+            console.log(e.id)
+            return{...e,id: e.id.substr(0,7), style: {background: "white"}}
         }
-        else if(e.id === '2')
-            return{...e,id: '1', data: {label: 'test2'}}
-        else if(e.id==='abc')
-            return{...e,id: 'def', data: {label: 'def'}}
-        else if(e.id==='def')
-            return{...e, id: 'abc', data: {label: 'abc'}}
+        else if(prereqs.indexOf(e.id)!==-1)
+        {
+            console.log(e.id)
+            return{...e, id: e.id+'_', style: {background: "#166DBA", color: "white"}};
+        }
         else
             return{...e}
 
