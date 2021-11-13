@@ -2,12 +2,10 @@ import React from 'react'
 
 const Form = ({setInputText, inputText,elements,setElements, count, setCount}) =>{
     const inputTextHandler = (e) => {
-        console.log(e.target.value);
         setInputText(e.target.value);
     };
     const addNode = (e) => {
         e.preventDefault();
-        console.log(elements);
         setElements([...elements, {id: inputText, type:'input',data: {label: inputText},position:{x:100,y:0}}]);
         setInputText("");
     };
