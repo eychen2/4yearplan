@@ -221,11 +221,10 @@ const handleNodeMouseEnter = (event,node) => {
     {
         let temp2=temp.pop()
         let next = CISE_Courses[CISE_Courses.findIndex(x=> x.code===temp2)].preReqs
-        next.forEach(element=> prereqs.add(element))
-        temp.concat(temp, next)
+        temp=temp.concat(next)
+        prereqs.add(temp2)
         
     }
-    console.log(prereqs)
     setElements(highlightnodes(elements,prereqs));
   }
 }
