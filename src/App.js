@@ -204,6 +204,54 @@ const CISE_Courses = [
         description: "Provides students with an interactive study of ethical theory and the development of professionalism. Students review case studies of ethical conflicts in engineering practice. Course covers engineering codes of ethics and requires students to resolve theoretical situations through application of ethical codes.",
         preReqs: [],
         yearReq: "junior level standing"
+    },
+    {
+        code: "CAP 3027",
+        name: "Introduction to Digital Arts and Sciences",
+        credit: 3,
+        description: "Synergy between art and computing through a programming-oriented exploration of fundamental concepts in multimedia.",
+        preReqs: ["COP 3503C"],
+        yearReq: "-"
+    },
+    {
+        code: "ARH 2051",
+        name: "Introduction to the Principles and History of Art 2",
+        credit: 3,
+        description: "Continuation of ARH 2050. Art and architecture from the Renaissance to the present. (H and N)",
+        preReqs: [],
+        yearReq: "-"
+    },
+    {
+        code: "CHM 1025",
+        name: "Introduction to Chemistry",
+        credit: 2,
+        description: "Introductory readiness course in general chemistry for those with weak yet satisfactory backgrounds in high school chemistry and algebra. (P). Can be replaced with a passing score on Chem placement",
+        preReqs: [],
+        yearReq: "-"
+    },
+    {
+        code: "MAC 1147",
+        name: "Introduction to Chemistry",
+        credit: 4,
+        description: "College algebra, functions, coordinate geometry, exponential and logarithmic functions, and trigonometry. Fast-paced review of algebra and trigonometry to prepare for calculus. Assumes prior knowledge of intermediate algebra (Algebra 2) and trigonometry. (M)",
+        preReqs: [],
+        yearReq: "-"
+    },
+    {
+        code: "CHM 2049",
+        name: "Chemistry for Engineers 1",
+        credit: 3,
+        description: "The first semester of the CHM 2095/CHM 2096 sequence. Topics include stoichiometry, energy and thermodynamics, atomic and molecular structure, the states of matter, reaction rates and introduces chemical equilibria. All topics are taught in an engineering case-study context. (P)",
+        preReqs: ["CHM 1025", "MAC 1147"],
+        yearReq: "-"
+    },
+    {
+        code: "MAP 2302",
+        name: "Elementary Differential Equations",
+        credit: 3,
+        description: "First-order ordinary differential equations, theory of linear ordinary differential equations, solution of linear ordinary differential equations with constant coefficients, the Laplace transform and its application to solving linear ordinary differential equations. (M)",
+        preReqs: ["MAC 2312"],
+        yearReq: "-"
     }
 ];
 
