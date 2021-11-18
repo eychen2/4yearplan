@@ -3,6 +3,7 @@ import './App.css'
 import ReactFlow, {Controls} from 'react-flow-renderer';
 import Form from './Components/Form'
 import highlightnodes from './hilightnodes.js'
+import Popup from "./popup.js";
 
 const CISE_Courses = [
     {
@@ -256,9 +257,15 @@ const CISE_Courses = [
 ];
 
 const initialElements=[{id: 'MAC 2311', type: 'input',data:{label: 'MAC 2311'},position:{x:0,y:0}}]
+
 const App = () => {
+//pop up const
+const [buttonPopup, setButtonPopup] = useState(false);
+
+//node const
 const [elements,setElements]=useState(initialElements);
 const [inputText,setInputText] = useState("");
+
 const handleNodeMouseEnter = (event,node) => {
   var index = CISE_Courses.findIndex(x=> x.code===node.id)
   if(index!==-1)
@@ -287,18 +294,22 @@ const handleNodeDragStop = (event, node) => {
   var index = elements.findIndex(x=> x.id===node.id)
   elements[index].position=node.position
 }
-const handleNodeContextMenu = (event, node) => {
+const handleNodeDoubleClick = (event, element) => {
     //put code here for right click info thing
-    console.log('attempted context menu call')
+    console.log('click', element);
+    setButtonPopup(true);
 }
   return (
       <div className="App">
+          <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+              <h3>My popup</h3>
+              <p>Popup text</p>
+          </Popup>
         <Form setInputText={setInputText} inputText={inputText} elements={elements} setElements={setElements}/>
         <div style={{height: 700}}>
-              <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDragStop={handleNodeDragStop} onNodeContextMenu={handleNodeContextMenu}> 
+              <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDragStop={handleNodeDragStop} onNodeDoubleClick={handleNodeDoubleClick} onPaneClick={() => setButtonPopup(false)}>
               <Controls/> 
               </ReactFlow>
-              
         </div>
       </div>
   );
