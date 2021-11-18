@@ -14,7 +14,7 @@
 
 .box {
     position: relative;
-    width: 70%;
+    width: 40%;
     margin: 0 auto;
     height: auto;
     max-height: 70vh;
@@ -24,10 +24,5 @@
     padding: 20px;
     border: 1px solid #999;
     overflow: auto;
-}
-
-.box .close-icon {
-    position: absolute;
-    top: 16px;
-    right: 16px;
+    text-align: left;
 }

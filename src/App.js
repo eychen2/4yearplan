@@ -257,11 +257,11 @@ const CISE_Courses = [
 ];
 
 const initialElements=[{id: 'MAC 2311', type: 'input',data:{label: 'MAC 2311'},position:{x:0,y:0}}]
+const courseInfo = []
 
 const App = () => {
 //pop up const
 const [buttonPopup, setButtonPopup] = useState(false);
-
 //node const
 const [elements,setElements]=useState(initialElements);
 const [inputText,setInputText] = useState("");
@@ -296,14 +296,41 @@ const handleNodeDragStop = (event, node) => {
 }
 const handleNodeDoubleClick = (event, element) => {
     //put code here for right click info thing
-    console.log('click', element);
+    //console.log('click', element);
+    courseInfo.length = 0;
+    for(let i=0; i < CISE_Courses.length; i++){
+        if(CISE_Courses.at(i).code === element.id){
+            courseInfo.push({
+                cId: CISE_Courses.at(i).code,
+                cName: CISE_Courses.at(i).name,
+                cCred: CISE_Courses.at(i).credit,
+                cDes: CISE_Courses.at(i).description
+            })
+        }
+    }
+    if(courseInfo.length === 0){
+        console.log("Class info not found")
+    }
     setButtonPopup(true);
 }
   return (
       <div className="App">
           <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-              <h3>My popup</h3>
-              <p>Popup text</p>
+              {courseInfo.map(function(c, hd){
+                  return (
+                      <h2 key={hd}>{c.cId + " " + c.cName}</h2>
+                  )
+              })}
+              {courseInfo.map(function(c, crd){
+                  return (
+                      <h3 key={crd}>{"Credits: " + c.cCred}</h3>
+                  )
+              })}
+              {courseInfo.map(function(c, bd){
+                  return (
+                      <p key={bd}>{c.cDes}</p>
+                  )
+              })}
           </Popup>
         <Form setInputText={setInputText} inputText={inputText} elements={elements} setElements={setElements}/>
         <div style={{height: 700}}>
