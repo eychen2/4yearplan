@@ -320,7 +320,7 @@ const handleNodeDragStop = (event, node) => {
   elements[index].position=node.position
 }
 const handleNodeMouseDrop = (event, node) => {
-    var index = elements.findIndex(x => x.id == node.id)
+    var index = elements.findIndex(x => x.id === node.id)
     node.position = {x: 300, y:300}
     elements[index].position = {x: 300, y:300}
 }
