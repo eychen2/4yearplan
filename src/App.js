@@ -294,6 +294,11 @@ const handleNodeDragStop = (event, node) => {
   var index = elements.findIndex(x=> x.id===node.id)
   elements[index].position=node.position
 }
+const handleNodeMouseDrop = (event, node) => {
+    var index = elements.findIndex(x => x.id == node.id)
+    node.position = {x: 300, y:300}
+    elements[index].position = {x: 300, y:300}
+}
 const handleNodeDoubleClick = (event, element) => {
     //put code here for right click info thing
     //console.log('click', element);
@@ -334,7 +339,7 @@ const handleNodeDoubleClick = (event, element) => {
           </Popup>
         <Form setInputText={setInputText} inputText={inputText} elements={elements} setElements={setElements}/>
         <div style={{height: 700}}>
-              <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDragStop={handleNodeDragStop} onNodeDoubleClick={handleNodeDoubleClick} onPaneClick={() => setButtonPopup(false)}>
+              <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDragStop={handleNodeMouseDrop} onNodeDoubleClick={handleNodeDoubleClick} onPaneClick={() => setButtonPopup(false)}>
               <Controls/> 
               </ReactFlow>
         </div>
