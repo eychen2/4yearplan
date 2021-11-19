@@ -4,6 +4,7 @@ import ReactFlow, {Controls} from 'react-flow-renderer';
 import Form from './Components/Form'
 import highlightnodes from './hilightnodes.js'
 import Popup from "./popup.js";
+import {distance} from 'mathjs';
 
 const CISE_Courses = [
     {
@@ -280,6 +281,8 @@ const initialElements=[{id: 'MAC 2311', type: 'input',data:{label: 'MAC 2311'},p
 {id: 'EGS 4034', type: 'input',data:{label: 'EGS 4034'},position:{x:750,y:150},style:{height: 10, width:80}},
 {id: 'CIS 4914', type: 'input',data:{label: 'CIS 4914'},position:{x:875,y:100},style:{height: 10, width:80}},
 ]
+const snapLocation=[{x:300, y:300}, {x:600, y:600}]
+const snapDistance=[]
 const courseInfo = []
 
 const App = () => {
@@ -321,8 +324,24 @@ const handleNodeDragStop = (event, node) => {
 }
 const handleNodeMouseDrop = (event, node) => {
     var index = elements.findIndex(x => x.id === node.id)
-    node.position = {x: 300, y:300}
-    elements[index].position = {x: 300, y:300}
+    var smallIndex
+    var smallVal=Number.MAX_VALUE
+    
+    //find distance between node and snap points
+    for(let i=0; i<snapLocation.length; i++){
+        snapDistance[i]=distance({pointOneX: node.position.x, pointOneY: node.position.y}, 
+            {pointTwoX: snapLocation[i].x, pointTwoY: snapLocation[i].y})
+        
+        //find smallest distance
+        if(snapDistance[i]<smallVal){
+            smallVal=snapDistance[i]
+            smallIndex=i
+        }
+    }
+    node.position=snapLocation[smallIndex]
+    elements[index].position=snapLocation[smallIndex]
+    //node.position = {x: 300, y:300}
+    //elements[index].position = {x: 300, y:300}
 }
 const handleNodeDoubleClick = (event, element) => {
     //put code here for right click info thing
