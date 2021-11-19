@@ -3,6 +3,7 @@ import './App.css'
 import ReactFlow, {Controls} from 'react-flow-renderer';
 import Form from './Components/Form'
 import highlightnodes from './hilightnodes.js'
+import Popup from "./popup.js";
 
 const CISE_Courses = [
     {
@@ -204,13 +205,90 @@ const CISE_Courses = [
         description: "Provides students with an interactive study of ethical theory and the development of professionalism. Students review case studies of ethical conflicts in engineering practice. Course covers engineering codes of ethics and requires students to resolve theoretical situations through application of ethical codes.",
         preReqs: [],
         yearReq: "junior level standing"
+    },
+    {
+        code: "CAP 3027",
+        name: "Introduction to Digital Arts and Sciences",
+        credit: 3,
+        description: "Synergy between art and computing through a programming-oriented exploration of fundamental concepts in multimedia.",
+        preReqs: ["COP 3503C"],
+        yearReq: "-"
+    },
+    {
+        code: "ARH 2051",
+        name: "Introduction to the Principles and History of Art 2",
+        credit: 3,
+        description: "Continuation of ARH 2050. Art and architecture from the Renaissance to the present. (H and N)",
+        preReqs: [],
+        yearReq: "-"
+    },
+    {
+        code: "CHM 1025",
+        name: "Introduction to Chemistry",
+        credit: 2,
+        description: "Introductory readiness course in general chemistry for those with weak yet satisfactory backgrounds in high school chemistry and algebra. (P). Can be replaced with a passing score on Chem placement",
+        preReqs: [],
+        yearReq: "-"
+    },
+    {
+        code: "MAC 1147",
+        name: "Introduction to Chemistry",
+        credit: 4,
+        description: "College algebra, functions, coordinate geometry, exponential and logarithmic functions, and trigonometry. Fast-paced review of algebra and trigonometry to prepare for calculus. Assumes prior knowledge of intermediate algebra (Algebra 2) and trigonometry. (M)",
+        preReqs: [],
+        yearReq: "-"
+    },
+    {
+        code: "CHM 2049",
+        name: "Chemistry for Engineers 1",
+        credit: 3,
+        description: "The first semester of the CHM 2095/CHM 2096 sequence. Topics include stoichiometry, energy and thermodynamics, atomic and molecular structure, the states of matter, reaction rates and introduces chemical equilibria. All topics are taught in an engineering case-study context. (P)",
+        preReqs: ["CHM 1025", "MAC 1147"],
+        yearReq: "-"
+    },
+    {
+        code: "MAP 2302",
+        name: "Elementary Differential Equations",
+        credit: 3,
+        description: "First-order ordinary differential equations, theory of linear ordinary differential equations, solution of linear ordinary differential equations with constant coefficients, the Laplace transform and its application to solving linear ordinary differential equations. (M)",
+        preReqs: ["MAC 2312"],
+        yearReq: "-"
     }
 ];
 
-const initialElements=[{id: 'MAC 2311', type: 'input',data:{label: 'MAC 2311'},position:{x:0,y:0}}]
+const initialElements=[{id: 'MAC 2311', type: 'input',data:{label: 'MAC 2311'},position:{x:0,y:100},style:{height: 10, width:80}},
+{id: 'COP 3502C', type: 'input',data:{label: 'COP 3502C'},position:{x:0,y:150}, style:{height: 10, width:80}},
+{id: 'EGN 2020C', type: 'input',data:{label: 'EGN 2020C'},position:{x:0,y:200},style:{height: 10, width:80}},
+{id: 'COP 3503C', type: 'input',data:{label: 'COP 3503'},position:{x:125,y:100},style:{height: 10, width:80}},
+{id: 'COT 3100', type: 'input',data:{label: 'COT 3100'},position:{x:125,y:150},style:{height: 10, width:80}},
+{id: 'MAC 2312', type: 'input',data:{label: 'MAC 2312'},position:{x:125,y:200},style:{height: 10, width:80}},
+{id: 'PHY 2048', type: 'input',data:{label: 'PHY 2048'},position:{x:125,y:250},style:{height: 10, width:80}},
+{id: 'PHY 2048L', type: 'input',data:{label: 'PHY 2048L'},position:{x:125,y:300},style:{height: 10, width:80}},
+{id: 'CDA 3101', type: 'input',data:{label: 'CDA 3101'},position:{x:375,y:100},style:{height: 10, width:80}},
+{id: 'COP 3530', type: 'input',data:{label: 'COP 3530'},position:{x:375,y:150},style:{height: 10, width:80}},
+{id: 'MAC 2313', type: 'input',data:{label: 'MAC 2313'},position:{x:375,y:200},style:{height: 10, width:80}},
+{id: 'PHY 2049', type: 'input',data:{label: 'PHY 2049L'},position:{x:375,y:250},style:{height: 10, width:80}},
+{id: 'CEN 3031', type: 'input',data:{label: 'CEN 3031'},position:{x:500,y:100},style:{height: 10, width:80}},
+{id: 'CIS 4301', type: 'input',data:{label: 'CIS 4301'},position:{x:500,y:150},style:{height: 10, width:80}},
+{id: 'ENC 3246', type: 'input',data:{label: 'ENC 3246'},position:{x:500,y:200},style:{height: 10, width:80}},
+{id: 'MAS 3114', type: 'input',data:{label: 'MAS 3114'},position:{x:500,y:250},style:{height: 10, width:80}},
+{id: 'COP 4600', type: 'input',data:{label: 'COP 4600'},position:{x:625,y:100},style:{height: 10, width:80}},
+{id: 'STA 3032', type: 'input',data:{label: 'STA 3032'},position:{x:625,y:150},style:{height: 10, width:80}},
+{id: 'COP 4020', type: 'input',data:{label: 'COP 4020'},position:{x:625,y:100},style:{height: 10, width:80}},
+{id: 'COP 4533', type: 'input',data:{label: 'COP 4533'},position:{x:625,y:150},style:{height: 10, width:80}},
+{id: 'CNT 4007', type: 'input',data:{label: 'CNT 4007'},position:{x:750,y:100},style:{height: 10, width:80}},
+{id: 'EGS 4034', type: 'input',data:{label: 'EGS 4034'},position:{x:750,y:150},style:{height: 10, width:80}},
+{id: 'CIS 4914', type: 'input',data:{label: 'CIS 4914'},position:{x:875,y:100},style:{height: 10, width:80}},
+]
+const courseInfo = []
+
 const App = () => {
+//pop up const
+const [buttonPopup, setButtonPopup] = useState(false);
+//node const
 const [elements,setElements]=useState(initialElements);
 const [inputText,setInputText] = useState("");
+
 const handleNodeMouseEnter = (event,node) => {
   var index = CISE_Courses.findIndex(x=> x.code===node.id)
   if(index!==-1)
@@ -240,18 +318,49 @@ const handleNodeDragStop = (event, node) => {
   var index = elements.findIndex(x=> x.id===node.id)
   elements[index].position=node.position
 }
-const handleNodeContextMenu = (event, node) => {
+const handleNodeDoubleClick = (event, element) => {
     //put code here for right click info thing
-    console.log('attempted context menu call')
+    //console.log('click', element);
+    courseInfo.length = 0;
+    for(let i=0; i < CISE_Courses.length; i++){
+        if(CISE_Courses.at(i).code === element.id){
+            courseInfo.push({
+                cId: CISE_Courses.at(i).code,
+                cName: CISE_Courses.at(i).name,
+                cCred: CISE_Courses.at(i).credit,
+                cDes: CISE_Courses.at(i).description
+            })
+        }
+    }
+    if(courseInfo.length === 0){
+        console.log("Class info not found")
+    }
+    setButtonPopup(true);
 }
   return (
       <div className="App">
+          <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+              {courseInfo.map(function(c, hd){
+                  return (
+                      <h2 key={hd}>{c.cId + " " + c.cName}</h2>
+                  )
+              })}
+              {courseInfo.map(function(c, crd){
+                  return (
+                      <h3 key={crd}>{"Credits: " + c.cCred}</h3>
+                  )
+              })}
+              {courseInfo.map(function(c, bd){
+                  return (
+                      <p key={bd}>{c.cDes}</p>
+                  )
+              })}
+          </Popup>
         <Form setInputText={setInputText} inputText={inputText} elements={elements} setElements={setElements}/>
         <div style={{height: 700}}>
-              <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDragStop={handleNodeDragStop} onNodeContextMenu={handleNodeContextMenu}> 
+              <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDragStop={handleNodeDragStop} onNodeDoubleClick={handleNodeDoubleClick} onPaneClick={() => setButtonPopup(false)}>
               <Controls/> 
               </ReactFlow>
-              
         </div>
       </div>
   );
