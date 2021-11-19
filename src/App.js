@@ -285,6 +285,8 @@ const courseInfo = []
 const App = () => {
 //pop up const
 const [buttonPopup, setButtonPopup] = useState(false);
+const [startPopup, setStartPopup] = useState(true);
+
 //node const
 const [elements,setElements]=useState(initialElements);
 const [inputText,setInputText] = useState("");
@@ -328,7 +330,8 @@ const handleNodeDoubleClick = (event, element) => {
                 cId: CISE_Courses.at(i).code,
                 cName: CISE_Courses.at(i).name,
                 cCred: CISE_Courses.at(i).credit,
-                cDes: CISE_Courses.at(i).description
+                cDes: CISE_Courses.at(i).description,
+                cReq: CISE_Courses.at(i).yearReq
             })
         }
     }
@@ -337,6 +340,7 @@ const handleNodeDoubleClick = (event, element) => {
     }
     setButtonPopup(true);
 }
+
   return (
       <div className="App">
           <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
@@ -348,6 +352,11 @@ const handleNodeDoubleClick = (event, element) => {
               {courseInfo.map(function(c, crd){
                   return (
                       <h3 key={crd}>{"Credits: " + c.cCred}</h3>
+                  )
+              })}
+              {courseInfo.map(function(c, yr){
+                  return (
+                      <h3 key={yr}>{"Year Requirement: " + c.cReq}</h3>
                   )
               })}
               {courseInfo.map(function(c, bd){
