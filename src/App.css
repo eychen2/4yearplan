@@ -41,3 +41,17 @@
   column-gap: 116px;
   justify-content: space-between;
 }
+
+.rectangle {
+  display: inline-block;
+  width: 100px;
+  height: 300px;
+  background: black;
+}
+
+.rectangle-spacer {
+  display: inline-block;
+  width: 50px;
+  height: 300px;
+  background: gray;
+}
