@@ -2,12 +2,12 @@ import React,{ useState} from 'react';
 import './App.css'
 import ReactFlow, {Controls} from 'react-flow-renderer';
 import Form from './Components/Form'
-import highlightnodes from './hilightnodes.js'
+import highlightnodes from './functions/hilightnodes.js'
+import snapnodes from './functions/snapnodes.js'
 import Popup from "./popup.js";
-import {distance} from 'mathjs';
 
-const CISE_Courses=require('./data/Courses');
-const initialElements=require('./data/InitialElements.js');
+const CISE_Courses=require('./data/Courses.js');
+const initialElements=require('./data/InitialElements');
 const snapLocation=require('./data/SnapLocations.js');
 
 const snapDistance=[]
@@ -32,10 +32,11 @@ const handleNodeMouseEnter = (event,node) => {
     {
         let temp2=temp.pop()
         let next = CISE_Courses[CISE_Courses.findIndex(x=> x.code===temp2)].preReqs
-        next.forEach(element=> prereqs.add(element))
-        temp.concat(temp, next)
+        temp=temp.concat(next)
+        prereqs.add(temp2)
         
-    }    setElements(highlightnodes(elements,prereqs));
+    }
+    setElements(highlightnodes(elements,prereqs));
   }
 }
 const handleNodeMouseLeave = (event,node) => {
@@ -46,30 +47,28 @@ const handleNodeMouseLeave = (event,node) => {
     setElements(highlightnodes(elements,prereqs));
   }
 }
-const handleNodeDragStop = (event, node) => {
+const handleNodeDrag = (event, node) => {
   var index = elements.findIndex(x=> x.id===node.id)
   elements[index].position=node.position
 }
-const handleNodeMouseDrop = (event, node) => {
-    var index = elements.findIndex(x => x.id === node.id)
-    var smallIndex
-    var smallVal=Number.MAX_VALUE
-    
-    //find distance between node and snap points
-    for(let i=0; i<snapLocation.length; i++){
-        snapDistance[i]=distance({pointOneX: node.position.x, pointOneY: node.position.y}, 
-            {pointTwoX: snapLocation[i].x, pointTwoY: snapLocation[i].y})
-        
-        //find smallest distance
-        if(snapDistance[i]<smallVal){
-            smallVal=snapDistance[i]
-            smallIndex=i
+function doSomething(elements,node)
+{
+    const newElements = elements.map((e) => {
+        if(e.id === node.id)
+        {
+            return{...e,position:{x:node.position.x-1,y:node.position.y-1}}
         }
-    }
-    node.position=snapLocation[smallIndex]
-    elements[index].position=snapLocation[smallIndex]
-    //node.position = {x: 300, y:300}
-    //elements[index].position = {x: 300, y:300}
+        else
+        {
+            return{...e}
+        }
+
+    })
+    return newElements;
+}
+const handleNodeMouseDrop = (event, node) => {
+    setElements(doSomething(elements,node))
+    setElements(snapnodes(elements,snapDistance,snapLocation,node))
 }
 const handleNodeDoubleClick = (event, element) => {
     //put code here for right click info thing
@@ -118,7 +117,7 @@ const handleNodeDoubleClick = (event, element) => {
           </Popup>
         <Form setInputText={setInputText} inputText={inputText} elements={elements} setElements={setElements}/>
         <div style={{height: 700}}>
-              <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDragStop={handleNodeMouseDrop} onNodeDoubleClick={handleNodeDoubleClick} onPaneClick={() => setButtonPopup(false)}>
+              <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDragStop={handleNodeMouseDrop}  onNodeDoubleClick={handleNodeDoubleClick} onPaneClick={() => setButtonPopup(false)}>
               <Controls/> 
               </ReactFlow>
         </div>

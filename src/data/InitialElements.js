@@ -20,7 +20,6 @@ const InitialElements=[{id: 'MAC 2311', type: 'input',data:{label: 'MAC 2311'},p
 {id: 'COP 4533', type: 'input',data:{label: 'COP 4533'},position:{x:625,y:150},style:{height: 10, width:80}},
 {id: 'CNT 4007', type: 'input',data:{label: 'CNT 4007'},position:{x:750,y:100},style:{height: 10, width:80}},
 {id: 'EGS 4034', type: 'input',data:{label: 'EGS 4034'},position:{x:750,y:150},style:{height: 10, width:80}},
-{id: 'CIS 4914', type: 'input',data:{label: 'CIS 4914'},position:{x:875,y:100},style:{height: 10, width:80}},
-]
+{id: 'CIS 4914', type: 'input',data:{label: 'CIS 4914'},position:{x:875,y:100},style:{height: 10, width:80}}]
 
 module.exports=InitialElements;

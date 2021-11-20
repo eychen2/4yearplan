@@ -247,6 +247,6 @@ const Courses = [
         preReqs: ["MAC 2312"],
         yearReq: "-"
     }
-]
+];
 
 module.exports=Courses;
