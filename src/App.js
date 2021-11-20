@@ -5,10 +5,16 @@ import Form from './Components/Form'
 import highlightnodes from './functions/hilightnodes.js'
 import snapnodes from './functions/snapnodes.js'
 import Popup from "./popup.js";
+import customNode from "./customNode";
 
 const CISE_Courses=require('./data/Courses.js');
 const initialElements=require('./data/InitialElements');
 const snapLocation=require('./data/SnapLocations.js');
+const nodeTypes = {
+    custom: customNode
+}
+
+const majorSelection=[{id: 'Major Selection', type: 'custom',data:{label: 'Please select your major: '},position:{x:850,y:100}, draggable: false, selectable: false}];
 
 const snapDistance=[]
 const courseInfo = []
@@ -16,7 +22,6 @@ const courseInfo = []
 const App = () => {
 //pop up const
 const [buttonPopup, setButtonPopup] = useState(false);
-const [startPopup, setStartPopup] = useState(true);
 
 //node const
 const [elements,setElements]=useState(initialElements);
@@ -117,7 +122,7 @@ const handleNodeDoubleClick = (event, element) => {
           </Popup>
         <Form setInputText={setInputText} inputText={inputText} elements={elements} setElements={setElements}/>
         <div style={{height: 700}}>
-              <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDragStop={handleNodeMouseDrop}  onNodeDoubleClick={handleNodeDoubleClick} onPaneClick={() => setButtonPopup(false)}>
+              <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDragStop={handleNodeMouseDrop}  onNodeDoubleClick={handleNodeDoubleClick} onPaneClick={() => setButtonPopup(false)} nodeTypes={nodeTypes}>
               <Controls/> 
               </ReactFlow>
         </div>
