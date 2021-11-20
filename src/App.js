@@ -319,10 +319,6 @@ const handleNodeMouseLeave = (event,node) => {
     setElements(highlightnodes(elements,prereqs));
   }
 }
-const handleNodeDrag = (event, node) => {
-  var index = elements.findIndex(x=> x.id===node.id)
-  elements[index].position=node.position
-}
 function doSomething(elements,node)
 {
     const newElements = elements.map((e) => {
