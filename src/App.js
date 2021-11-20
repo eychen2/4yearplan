@@ -63,18 +63,7 @@ function doSomething(elements,node)
 }
 const handleNodeMouseDrop = (event, node) => {
     setElements(doSomething(elements,node))
-    var index = CISE_Courses.findIndex(x=> x.code===node.id)
-    let temp= CISE_Courses[index].preReqs.slice(0)
-    let prereqs = new Set(temp)
-    while(temp.length)
-    {
-        let temp2=temp.pop()
-        let next = CISE_Courses[CISE_Courses.findIndex(x=> x.code===temp2)].preReqs
-        temp=temp.concat(next)
-        prereqs.add(temp2)
-        
-    }
-    setElements(snapnodes(elements,snapDistance,snapLocation,node,prereqs))
+    setElements(snapnodes(elements,snapDistance,snapLocation,node))
 }
 const handleNodeDoubleClick = (event, element) => {
     //put code here for right click info thing
