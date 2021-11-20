@@ -6,6 +6,7 @@ const InitialElements=[{id: 'MAC 2311', type: 'input',data:{label: 'MAC 2311'},p
 {id: 'MAC 2312', type: 'input',data:{label: 'MAC 2312'},position:{x:125,y:200},style:{height: 10, width:80}},
 {id: 'PHY 2048', type: 'input',data:{label: 'PHY 2048'},position:{x:125,y:250},style:{height: 10, width:80}},
 {id: 'PHY 2048L', type: 'input',data:{label: 'PHY 2048L'},position:{x:125,y:300},style:{height: 10, width:80}},
+{id: 'ENC 1101', type: 'input',data:{label: 'ENC 1102'},position:{x:250,y:100},style:{height: 10, width:80}},
 {id: 'CDA 3101', type: 'input',data:{label: 'CDA 3101'},position:{x:375,y:100},style:{height: 10, width:80}},
 {id: 'COP 3530', type: 'input',data:{label: 'COP 3530'},position:{x:375,y:150},style:{height: 10, width:80}},
 {id: 'MAC 2313', type: 'input',data:{label: 'MAC 2313'},position:{x:375,y:200},style:{height: 10, width:80}},
