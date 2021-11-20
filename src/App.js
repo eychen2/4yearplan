@@ -118,7 +118,14 @@ const handleNodeDoubleClick = (event, element) => {
         <Form setInputText={setInputText} inputText={inputText} elements={elements} setElements={setElements}/>
         <div style={{height: 700}}>
               <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDragStop={handleNodeMouseDrop}  onNodeDoubleClick={handleNodeDoubleClick} onPaneClick={() => setButtonPopup(false)}>
-              <Controls/> 
+              <Controls/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:0}}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:125}}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:375}}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:500}}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:625}}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:750}}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:875}}/>
               </ReactFlow>
         </div>
       </div>
