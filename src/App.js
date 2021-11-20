@@ -16,10 +16,9 @@ const courseInfo = []
 const App = () => {
 //pop up const
 const [buttonPopup, setButtonPopup] = useState(false);
-const [startPopup, setStartPopup] = useState(true);
 
 //node const
-const [elements,setElements]=useState(initialElements);
+const [elements,setElements]=useState([]);
 const [inputText,setInputText] = useState("");
 
 const handleNodeMouseEnter = (event,node) => {
@@ -72,7 +71,6 @@ const handleNodeMouseDrop = (event, node) => {
 }
 const handleNodeDoubleClick = (event, element) => {
     //put code here for right click info thing
-    //console.log('click', element);
     courseInfo.length = 0;
     for(let i=0; i < CISE_Courses.length; i++){
         if(CISE_Courses.at(i).code === element.id){
@@ -90,9 +88,28 @@ const handleNodeDoubleClick = (event, element) => {
     }
     setButtonPopup(true);
 }
+    const clickCSE = () => {
+        console.log('CSE');
+        setElements(initialElements);
+    };
+    const clickCSC = () => {
+        console.log('CSC');
+        setElements(initialElements);
+    };
+    const clickDAS = () => {
+        console.log('DAS');
+        setElements(initialElements);
+    };
 
   return (
       <div className="App">
+          <p></p>
+          <button onClick={clickCSE}>Computer Science (CSE)</button>
+          <p></p>
+          <button onClick={clickCSC}>Computer Science (CSC)</button>
+          <p></p>
+          <button onClick={clickDAS}>Digital Arts and Sciences (DAS)</button>
+          <p></p>
           <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
               {courseInfo.map(function(c, hd){
                   return (
@@ -118,7 +135,14 @@ const handleNodeDoubleClick = (event, element) => {
         <Form setInputText={setInputText} inputText={inputText} elements={elements} setElements={setElements}/>
         <div style={{height: 700}}>
               <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDragStop={handleNodeMouseDrop}  onNodeDoubleClick={handleNodeDoubleClick} onPaneClick={() => setButtonPopup(false)}>
-              <Controls/> 
+              <Controls/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:0}}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:125}}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:375}}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:500}}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:625}}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:750}}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:875}}/>
               </ReactFlow>
         </div>
       </div>
