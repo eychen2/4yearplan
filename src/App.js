@@ -5,16 +5,10 @@ import Form from './Components/Form'
 import highlightnodes from './functions/hilightnodes.js'
 import snapnodes from './functions/snapnodes.js'
 import Popup from "./popup.js";
-import customNode from "./customNode";
 
 const CISE_Courses=require('./data/Courses.js');
 const initialElements=require('./data/InitialElements');
 const snapLocation=require('./data/SnapLocations.js');
-const nodeTypes = {
-    custom: customNode
-}
-
-const majorSelection=[{id: 'Major Selection', type: 'custom',data:{label: 'Please select your major: '},position:{x:850,y:100}, draggable: false, selectable: false}];
 
 const snapDistance=[]
 const courseInfo = []
@@ -24,7 +18,7 @@ const App = () => {
 const [buttonPopup, setButtonPopup] = useState(false);
 
 //node const
-const [elements,setElements]=useState(initialElements);
+const [elements,setElements]=useState([]);
 const [inputText,setInputText] = useState("");
 
 const handleNodeMouseEnter = (event,node) => {
@@ -77,7 +71,6 @@ const handleNodeMouseDrop = (event, node) => {
 }
 const handleNodeDoubleClick = (event, element) => {
     //put code here for right click info thing
-    //console.log('click', element);
     courseInfo.length = 0;
     for(let i=0; i < CISE_Courses.length; i++){
         if(CISE_Courses.at(i).code === element.id){
@@ -95,9 +88,28 @@ const handleNodeDoubleClick = (event, element) => {
     }
     setButtonPopup(true);
 }
+    const clickCSE = () => {
+        console.log('CSE');
+        setElements(initialElements);
+    };
+    const clickCSC = () => {
+        console.log('CSC');
+        setElements(initialElements);
+    };
+    const clickDAS = () => {
+        console.log('DAS');
+        setElements(initialElements);
+    };
 
   return (
       <div className="App">
+          <p></p>
+          <button onClick={clickCSE}>Computer Science (CSE)</button>
+          <p></p>
+          <button onClick={clickCSC}>Computer Science (CSC)</button>
+          <p></p>
+          <button onClick={clickDAS}>Digital Arts and Sciences (DAS)</button>
+          <p></p>
           <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
               {courseInfo.map(function(c, hd){
                   return (
@@ -122,7 +134,7 @@ const handleNodeDoubleClick = (event, element) => {
           </Popup>
         <Form setInputText={setInputText} inputText={inputText} elements={elements} setElements={setElements}/>
         <div style={{height: 700}}>
-              <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDragStop={handleNodeMouseDrop}  onNodeDoubleClick={handleNodeDoubleClick} onPaneClick={() => setButtonPopup(false)} nodeTypes={nodeTypes}>
+              <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDragStop={handleNodeMouseDrop}  onNodeDoubleClick={handleNodeDoubleClick} onPaneClick={() => setButtonPopup(false)}>
               <Controls/> 
               </ReactFlow>
         </div>
