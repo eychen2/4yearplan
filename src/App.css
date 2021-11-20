@@ -36,6 +36,11 @@
     transform: rotate(360deg);
   }
 }
+.creds {
+  display: inline-flex;
+  column-gap: 116px;
+  justify-content: space-between;
+}
 
 .rectangle {
   display: inline-block;

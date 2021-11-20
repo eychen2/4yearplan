@@ -4,12 +4,12 @@ import ReactFlow, {Controls} from 'react-flow-renderer';
 import Form from './Components/Form'
 import highlightnodes from './functions/hilightnodes.js'
 import snapnodes from './functions/snapnodes.js'
+import getcreds from './functions/getcreds.js'
 import Popup from "./popup.js";
 
 const CISE_Courses=require('./data/Courses.js');
 const initialElements=require('./data/InitialElements');
 const snapLocation=require('./data/SnapLocations.js');
-
 const snapDistance=[]
 const courseInfo = []
 
@@ -46,10 +46,6 @@ const handleNodeMouseLeave = (event,node) => {
     setElements(highlightnodes(elements,prereqs));
   }
 }
-const handleNodeDrag = (event, node) => {
-  var index = elements.findIndex(x=> x.id===node.id)
-  elements[index].position=node.position
-}
 function doSomething(elements,node)
 {
     const newElements = elements.map((e) => {
@@ -67,7 +63,18 @@ function doSomething(elements,node)
 }
 const handleNodeMouseDrop = (event, node) => {
     setElements(doSomething(elements,node))
-    setElements(snapnodes(elements,snapDistance,snapLocation,node))
+    var index = CISE_Courses.findIndex(x=> x.code===node.id)
+    let temp= CISE_Courses[index].preReqs.slice(0)
+    let prereqs = new Set(temp)
+    while(temp.length)
+    {
+        let temp2=temp.pop()
+        let next = CISE_Courses[CISE_Courses.findIndex(x=> x.code===temp2)].preReqs
+        temp=temp.concat(next)
+        prereqs.add(temp2)
+        
+    }
+    setElements(snapnodes(elements,snapDistance,snapLocation,node,prereqs))
 }
 const handleNodeDoubleClick = (event, element) => {
     //put code here for right click info thing
@@ -133,6 +140,18 @@ const handleNodeDoubleClick = (event, element) => {
               })}
           </Popup>
         <Form setInputText={setInputText} inputText={inputText} elements={elements} setElements={setElements}/>
+        <div className="creds">
+            <div className="element">Credits: {getcreds(elements,CISE_Courses,0)}</div>
+            <div className="element">Credits:{getcreds(elements,CISE_Courses,125)}</div>
+            <div className="element">Credits:{getcreds(elements,CISE_Courses,250)}</div>
+            <div className="element">Credits:{getcreds(elements,CISE_Courses,375)}</div>
+            <div className="element">Credits:{getcreds(elements,CISE_Courses,500)}</div>
+            <div className="element">Credits:{getcreds(elements,CISE_Courses,625)}</div>
+            <div className="element">Credits:{getcreds(elements,CISE_Courses,750)}</div>
+            <div className="element">Credits:{getcreds(elements,CISE_Courses,875)}</div>
+
+
+        </div>
         <div style={{height: 700}}>
               <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDragStop={handleNodeMouseDrop}  onNodeDoubleClick={handleNodeDoubleClick} onPaneClick={() => setButtonPopup(false)}>
               <Controls/>

@@ -1,7 +1,7 @@
 const InitialElements=[{id: 'MAC 2311', type: 'input',data:{label: 'MAC 2311'},position:{x:0,y:100},style:{height: 10, width:80}},
 {id: 'COP 3502C', type: 'input',data:{label: 'COP 3502C'},position:{x:0,y:150}, style:{height: 10, width:80}},
 {id: 'EGN 2020C', type: 'input',data:{label: 'EGN 2020C'},position:{x:0,y:200},style:{height: 10, width:80}},
-{id: 'COP 3503C', type: 'input',data:{label: 'COP 3503'},position:{x:125,y:100},style:{height: 10, width:80}},
+{id: 'COP 3503C', type: 'input',data:{label: 'COP 3503C'},position:{x:125,y:100},style:{height: 10, width:80}},
 {id: 'COT 3100', type: 'input',data:{label: 'COT 3100'},position:{x:125,y:150},style:{height: 10, width:80}},
 {id: 'MAC 2312', type: 'input',data:{label: 'MAC 2312'},position:{x:125,y:200},style:{height: 10, width:80}},
 {id: 'PHY 2048', type: 'input',data:{label: 'PHY 2048'},position:{x:125,y:250},style:{height: 10, width:80}},
