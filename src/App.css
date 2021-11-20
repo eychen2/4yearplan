@@ -38,7 +38,7 @@
 }
 .creds {
   display: inline-flex;
-  column-gap: 116px;
+  column-gap: 110px;
   justify-content: space-between;
 }
 
