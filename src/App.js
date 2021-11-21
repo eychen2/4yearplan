@@ -65,7 +65,25 @@ function doSomething(elements,node)
 }
 const handleNodeMouseDrop = (event, node) => {
     setElements(doSomething(elements,node))
-    setElements(snapnodes(elements,snapDistance,snapLocation,node))
+    var index = CISE_Courses.findIndex(x=> x.code===node.id)
+    if(index!==-1)
+    {
+      let temp= CISE_Courses[index].preReqs.slice(0)
+      let prereqs = new Set(temp)
+      while(temp.length)
+      {
+          let temp2=temp.pop()
+          let next = CISE_Courses[CISE_Courses.findIndex(x=> x.code===temp2)].preReqs
+          temp=temp.concat(next)
+          prereqs.add(temp2)
+          
+      }
+      setElements(snapnodes(elements,snapDistance,snapLocation,node,prereqs))
+    }
+    else
+    {
+        setElements(snapnodes(elements,snapDistance,snapLocation,node))
+    }
 }
 const handleNodeDoubleClick = (event, element) => {
     //put code here for right click info thing
@@ -101,7 +119,42 @@ const handleNodeDoubleClick = (event, element) => {
 
   return (
       <div className="App">
-          <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+          <p></p>
+          <button onClick={clickCSE}>Computer Science (CSE)</button>
+          <p></p>
+          <button onClick={clickCSC}>Computer Science (CSC)</button>
+          <p></p>
+          <button onClick={clickDAS}>Digital Arts and Sciences (DAS)</button>
+          <p></p>
+        <Form setInputText={setInputText} inputText={inputText} elements={elements} setElements={setElements}/>
+        <p></p>
+        <div className="creds">
+            <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(0).x+10}}>Credits: {getcreds(elements,CISE_Courses,snapLocation.at(0).x)}</div>
+            <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(6).x+10}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(6).x)}</div>
+            <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(12).x+10}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(12).x)}</div>
+            <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(18).x+10}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(18).x)}</div>
+            <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(24).x+10}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(24).x)}</div>
+            <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(30).x+10}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(30).x)}</div>
+            <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(36).x+10}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(36).x)}</div>
+            <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(42).x+10}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(42).x)}</div>
+            <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(48).x+10}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(48).x)}</div>
+
+        </div>
+        <div style={{height: 700}}>
+              <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDragStop={handleNodeMouseDrop}  onNodeDoubleClick={handleNodeDoubleClick} onPaneClick={() => setButtonPopup(false)} paneMoveable={paneMoveable}>
+              <Controls showFitView={false} showInteractive={false} showZoom={false}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(0).x}}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(6).x}}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(12).x}}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(18).x}}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(24).x}}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(30).x}}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(36).x}}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(42).x}}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(48).x}}/>
+              </ReactFlow>
+        </div>
+         <Popup  trigger={buttonPopup} setTrigger={setButtonPopup}>
               {courseInfo.map(function(c, hd){
                   return (
                       <h2 key={hd}>{c.cId + " " + c.cName}</h2>
@@ -123,38 +176,6 @@ const handleNodeDoubleClick = (event, element) => {
                   )
               })}
           </Popup>
-          <p></p>
-          <button onClick={clickCSE}>Computer Science (CSE)</button>
-          <p></p>
-          <button onClick={clickCSC}>Computer Science (CSC)</button>
-          <p></p>
-          <button onClick={clickDAS}>Digital Arts and Sciences (DAS)</button>
-          <p></p>
-        <Form setInputText={setInputText} inputText={inputText} elements={elements} setElements={setElements}/>
-        <p></p>
-        <div className="creds">
-            <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(0).x}}>Credits: {getcreds(elements,CISE_Courses,snapLocation.at(0).x)}</div>
-            <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(5).x}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(5).x)}</div>
-            <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(10).x}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(10).x)}</div>
-            <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(15).x}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(15).x)}</div>
-            <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(20).x}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(20).x)}</div>
-            <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(25).x}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(25).x)}</div>
-            <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(30).x}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(30).x)}</div>
-            <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(35).x}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(35).x)}</div>
-        </div>
-        <div style={{height: 700}}>
-              <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDragStop={handleNodeMouseDrop}  onNodeDoubleClick={handleNodeDoubleClick} onPaneClick={() => setButtonPopup(false)} paneMoveable={paneMoveable}>
-              <Controls showFitView={false} showInteractive={false} showZoom={false}/>
-              <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(0).x}}/>
-              <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(5).x}}/>
-              <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(10).x}}/>
-              <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(15).x}}/>
-              <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(20).x}}/>
-              <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(25).x}}/>
-              <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(30).x}}/>
-              <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(35).x}}/>
-              </ReactFlow>
-        </div>
       </div>
   );
 }

@@ -20,6 +20,10 @@ const SnapLocations=[
         x:0,
         y:300
     },
+    {
+        x:0,
+        y:350
+    },
     //column 2
     {
         x:125, //5
@@ -40,6 +44,10 @@ const SnapLocations=[
     {
         x:125,
         y:300
+    },
+    {
+        x:125,
+        y:350
     },
     //column 3
     {
@@ -62,6 +70,10 @@ const SnapLocations=[
         x:250,
         y:300
     },
+    {
+        x:250, //10
+        y:350
+    },
     //column 4
     {
         x:375, //15
@@ -82,6 +94,10 @@ const SnapLocations=[
     {
         x:375,
         y:300
+    },
+    {
+        x:375,
+        y:350
     },
     //column 5
     {
@@ -104,6 +120,10 @@ const SnapLocations=[
         x:500,
         y:300
     },
+    {
+        x:500,
+        y:350
+    },
     //column 6
     {
         x:625,
@@ -124,6 +144,10 @@ const SnapLocations=[
     {
         x:625,
         y:300
+    },
+    {
+        x:625,
+        y:350
     },
     //column 7
     {
@@ -146,6 +170,10 @@ const SnapLocations=[
         x:750,
         y:300
     },
+    {
+        x:750,
+        y:350
+    },
     //column 8
     {
         x:875,
@@ -166,6 +194,35 @@ const SnapLocations=[
     {
         x:875,
         y:300
+    },
+    {
+        x:875,
+        y:350
+    },
+    //column 9
+    {
+        x:1000,
+        y:100
+    },
+    {
+        x:1000,
+        y:150
+    },
+    {
+        x:1000,
+        y:200
+    },
+    {
+        x:1000,
+        y:250
+    },
+    {
+        x:1000,
+        y:300
+    },
+    {
+        x:1000,
+        y:350
     },
 ]
 
