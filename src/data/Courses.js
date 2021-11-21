@@ -246,7 +246,144 @@ const Courses = [
         description: "First-order ordinary differential equations, theory of linear ordinary differential equations, solution of linear ordinary differential equations with constant coefficients, the Laplace transform and its application to solving linear ordinary differential equations. (M)",
         preReqs: ["MAC 2312"],
         yearReq: "-"
+    },
+    {
+        code:"CAP 3020",
+        name:"Theory and Practice of Multimedia Production",
+        credit: 3,
+        description:"Combines the traditional media production pipeline and software engineering processes to synthesize an approach geared for the production of works incorporating both artistic and computational elements.",
+        preReqs:["CAP 3027"],
+        yearReq: "-"
+    },
+    {
+        code:"CAP 3027",
+        name:"Introduction to Digital Arts and Sciences",
+        credit: 3,
+        description:"Synergy between art and computing through a programming-oriented exploration of fundamental concepts in multimedia.",
+        preReqs:["COP 3503"],
+        yearReq: "-"
+    },
+    {
+        code:"CAP 3032",
+        name:"Interactive Modeling and Animation 1",
+        credit: 3,
+        description:"Introduces programming and data structures for interactive two-dimensional multimedia applications. Representing form and transforms in two dimensions, capturing user actions and driving application behavior interactively. Graphical interfaces, image processing, automata and basic artificial intelligence.",
+        preReqs:["MAC 1447"],
+        yearReq: "-"
+    },
+    {
+        code:"CAP 3034",
+        name:"Introduction to Computer-Aided Animation",
+        credit: 3,
+        description:"Introduces topics related to computer-aided animation. Rigging for forward and inverse kinematics. Skin weighting. Morph targets. Expression-driven animation, rigid-body and particle simulation.",
+        preReqs:["MAC 1447"],
+        yearReq: "-"
+    },
+    {
+        code:"CAP 3220",
+        name:"Introduction to Computer-Aided Modeling",
+        credit: 3,
+        description:"Introduces topics related to computer-aided modeling. Polygonal mesh, NURBS and subdivision surface meshes. Materials and shading networks. Lighting, shadows and rendering.",
+        preReqs:["MAC 1447"],
+        yearReq: "-"
+    },
+    {
+        code:"CAP 4136",
+        name:"Malware Reverse Engineering",
+        credit: 3,
+        description:"Introduction to the theory and practice of software reverse engineering applied to the analysis of malicious software (malware). Students will learn techniques of static and dynamic analysis to help identify the full spectrum of the behavior of code that is presented without documentation or source code and to identify possible remediation and avoidance techniques. The course will use a large number of software tools employed by malware and computer forensic analysts.",
+        preReqs:["CDA 3101"],
+        yearReq: "-"
+    },
+    {
+        code:"CEN 4721",
+        name:"Human-Computer Interaction",
+        credit:3,
+        description:"Studies the major topics in the study, planning and design of the interaction between people and computers. Topics include interface design (principles, theories and guidelines), virtual environments, interactive devices and collaboration.",
+        preReqs:["COP 3530"],
+        yearReq: "-"
+    },
+    {
+        code:"CEN 4722",
+        name:"User Experience Design",
+        credit:3,
+        description:"Introduces methods and tools used in User Experience Design (UXD): the early stages of software design focused on meeting user needs. Key concepts include user research, contextual design, design thinking, ideation, iterative design, prototyping, and design documentation. Projects utilize software tools used in the industry.",
+        preReqs:["COP 3530"],
+        yearReq: "-"
+    },
+    {
+        code:"COT 4501",
+        name:"Numerical Analysis: a Computational Approach",
+        credit:3,
+        description:"Numerical integration, nonlinear equations, linear and nonlinear systems of equations, differential equations and interpolation.",
+        preReqs:["COP 3503","MAS 3114"],
+        yearReq: "-"
+    },
+    {
+        code:"CDA 4102",
+        name:"Computer Architecture",
+        credit:3,
+        description:"Introduces computer architecture and system organization including virtual memory supports cache, pipeline, vector processing, multiprocessor and RISC architecture.",
+        preReqs:["CDA 3101", "COP 3530"],
+        yearReq: "-"
+    },
+    {
+        code:"CEN 4072",
+        name:"Software Testing and Verification",
+        credit:3,
+        description:"Concepts, principles and techniques of software testing and verification. Strengths and limitations of black-box and white-box testing methods; techniques for proving the correctness of programs.",
+        preReqs:["CEN 3031"],
+        yearReq: "-"
+    },
+    {
+        code:"COP 4720",
+        name:"Information and Database Systems 2",
+        credit:3,
+        description:"Part two of a two-course sequence. Provides a basic understanding of the internals of a modern database system. Topics include data storage, indexing, query processing and advanced concepts such as database tuning, alternate data models and emerging applications.",
+        preReqs:["CIS 4301","COP 3530"],
+        yearReq: "-"
+    },
+    {
+        code:"CAP 4613",
+        name:"Deep Learning for Computer Graphics",
+        credit:3,
+        description:"This undergraduate course covers deep learning basics, related math and the fundamental theory and application of AI algorithms most popular in the field of computer graphics. Programming assignments will help students develop GPU programming skills while implementing concepts learned in lectures and readings using deep learning APIs on a GPU cluster. Convolutional neural networks (CNNs) for colorizing black and white movies is an example.",
+        preReqs:["COP 3530"],
+        yearReq: "-"
+    },
+    {
+        code:"CAP 4770",
+        name:"Introduction to Data Science",
+        credit:3,
+        description:"Introduces the basics of data science including programming for data analytics, file management, relational databases, classification, clustering, and regression; lays the foundation for big data applications ranging from social networks to medical and business informatics.",
+        preReqs:["COP 3530"],
+        yearReq: "-"
+    },
+    {
+        code:"CIS 4213",
+        name:"Enterprise Security",
+        credit:3,
+        description:"Provides an introduction to the real-world aspects of defending an enterprise network. Students will gain hands-on experience performing system security tasks and handling incidents. The class begins with a basic introduction to enterprise cybersecurity, the attack sequence, and managing cybersecurity. Then lecture, homework and lab activities cover the center for internet security's twenty essential security controls.",
+        preReqs:["COP 3530"],
+        yearReq: "-"
+    },
+    {
+        code:"CIS 4360",
+        name:"Computer and Information Security",
+        credit:3,
+        description:"Covers systematic threat and risk assessment; programmed threats and controls in hardware, software, and human procedures; security policies, models, and mechanisms; theoretical limitations and practical implementations; certification and accreditation standards; and case study reviews. Includes projects.",
+        preReqs:["COP 4600"],
+        yearReq: "-"
+    },
+    {
+        code:"CIS 4715",
+        name:"CS Teaching & Learning",
+        credit:3,
+        description:"Covers basic pedagogy, especially as it relates to computer science and engineering, and covers three fundamental elements in education: learning environment, educational theory, and educational practice as approached to engineering-specific training.",
+        preReqs:["COP 3502"],
+        yearReq: "-"
     }
+
 ];
 
 module.exports=Courses;
