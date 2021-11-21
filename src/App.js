@@ -20,6 +20,8 @@ const [buttonPopup, setButtonPopup] = useState(false);
 //node const
 const [elements,setElements]=useState([]);
 const [inputText,setInputText] = useState("");
+const [paneMoveable, setPaneMoveable] = useState(false);
+
 
 const handleNodeMouseEnter = (event,node) => {
   var index = CISE_Courses.findIndex(x=> x.code===node.id)
@@ -142,8 +144,8 @@ const handleNodeDoubleClick = (event, element) => {
 
         </div>
         <div style={{height: 700}}>
-              <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDragStop={handleNodeMouseDrop}  onNodeDoubleClick={handleNodeDoubleClick} onPaneClick={() => setButtonPopup(false)}>
-              <Controls/>
+              <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDragStop={handleNodeMouseDrop}  onNodeDoubleClick={handleNodeDoubleClick} onPaneClick={() => setButtonPopup(false)} paneMoveable={paneMoveable}>
+              <Controls showFitView={false} showInteractive={false} showZoom={false}/>
               <div className="rectangle" style={{position:'absolute', top:100,left:0}}/>
               <div className="rectangle" style={{position:'absolute', top:100,left:125}}/>
               <div className="rectangle" style={{position:'absolute', top:100,left:375}}/>
