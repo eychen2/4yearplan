@@ -136,6 +136,11 @@ const handleNodeDoubleClick = (event, element) => {
             <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(0).x}}>Credits: {getcreds(elements,CISE_Courses,snapLocation.at(0).x)}</div>
             <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(5).x}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(5).x)}</div>
             <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(10).x}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(10).x)}</div>
+            <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(15).x}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(15).x)}</div>
+            <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(20).x}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(20).x)}</div>
+            <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(25).x}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(25).x)}</div>
+            <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(30).x}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(30).x)}</div>
+            <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(35).x}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(35).x)}</div>
         </div>
         <div style={{height: 700}}>
               <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDragStop={handleNodeMouseDrop}  onNodeDoubleClick={handleNodeDoubleClick} onPaneClick={() => setButtonPopup(false)} paneMoveable={paneMoveable}>
@@ -143,6 +148,11 @@ const handleNodeDoubleClick = (event, element) => {
               <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(0).x}}/>
               <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(5).x}}/>
               <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(10).x}}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(15).x}}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(20).x}}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(25).x}}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(30).x}}/>
+              <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(35).x}}/>
               </ReactFlow>
         </div>
       </div>
