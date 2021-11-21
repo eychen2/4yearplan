@@ -1,3 +1,4 @@
+
 export default function getcreds(elements,CISE_Courses,posX)
 {
     let creds=0;
