@@ -1,7 +1,7 @@
 const SnapLocations=[
     //column 1
     {
-        x:0,
+        x:0, //0
         y:100
     },
     {
@@ -22,7 +22,7 @@ const SnapLocations=[
     },
     //column 2
     {
-        x:125,
+        x:125, //5
         y:100
     },
     {
@@ -43,7 +43,7 @@ const SnapLocations=[
     },
     //column 3
     {
-        x:300,
+        x:300, //10
         y:300
     },
     {
@@ -64,7 +64,7 @@ const SnapLocations=[
     },
     //column 4
     {
-        x:300,
+        x:300, //15
         y:300
     },
     {
@@ -85,7 +85,7 @@ const SnapLocations=[
     },
     //column 5
     {
-        x:300,
+        x:300, //20
         y:300
     },
     {
