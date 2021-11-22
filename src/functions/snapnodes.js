@@ -22,10 +22,12 @@ export default function highlightnodes(elements,snapDistance,snapLocation,node,p
             {
                 for(let item of prereqs)
                 {   
-                    console.log(item)
                     var index = elements.findIndex(x=> x.id.substr(0,x.id.length-1)===item)
                     if(index!==-1&&elements[index].position.x>=snapLocation[smallIndex].x)
-                        return{...e,position:{x:e.position.x+1,y:e.position.y+1}}
+                    {
+                        alert(e.id+" cannot be in the same semester or before "+elements[index].id.substr(0,elements[index].id.length-1))
+                        return{...e,position:{x:e.position.x,y:e.position.y}}
+                    }
                 }
             }
             return{...e,position:snapLocation[smallIndex]}
