@@ -18,12 +18,15 @@ export default function highlightnodes(elements,snapDistance,snapLocation,node,p
                     smallIndex=i
                 }
             }
-            for(let item of prereqs)
-            {   
-                console.log(item)
-                var index = elements.findIndex(x=> x.id.substr(0,x.id.length-1)===item)
-                if(index!==-1&&elements[index].position.x>=snapLocation[smallIndex].x)
-                    return{...e,position:{x:e.position.x+1,y:e.position.y+1}}
+            if(prereqs.size>0)
+            {
+                for(let item of prereqs)
+                {   
+                    console.log(item)
+                    var index = elements.findIndex(x=> x.id.substr(0,x.id.length-1)===item)
+                    if(index!==-1&&elements[index].position.x>=snapLocation[smallIndex].x)
+                        return{...e,position:{x:e.position.x+1,y:e.position.y+1}}
+                }
             }
             return{...e,position:snapLocation[smallIndex]}
         }

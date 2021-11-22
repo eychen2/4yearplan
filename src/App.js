@@ -5,6 +5,7 @@ import Form from './Components/Form'
 import highlightnodes from './functions/hilightnodes.js'
 import snapnodes from './functions/snapnodes.js'
 import getcreds from './functions/getcreds.js'
+import removeElement from './functions/removeElement.js'
 import Popup from "./popup.js";
 
 const CISE_Courses=require('./data/Courses.js');
@@ -66,24 +67,46 @@ function doSomething(elements,node)
 const handleNodeMouseDrop = (event, node) => {
     setElements(doSomething(elements,node))
     var index = CISE_Courses.findIndex(x=> x.code===node.id)
+    let prereqs= new Set()
     if(index!==-1)
     {
       let temp= CISE_Courses[index].preReqs.slice(0)
-      let prereqs = new Set(temp)
+      let prereqs2 = new Set(temp)
       while(temp.length)
       {
           let temp2=temp.pop()
           let next = CISE_Courses[CISE_Courses.findIndex(x=> x.code===temp2)].preReqs
           temp=temp.concat(next)
-          prereqs.add(temp2)
+          prereqs2.add(temp2)
           
       }
-      setElements(snapnodes(elements,snapDistance,snapLocation,node,prereqs))
+      setElements(snapnodes(elements,snapDistance,snapLocation,node,prereqs2))
     }
     else
     {
-        setElements(snapnodes(elements,snapDistance,snapLocation,node))
+        setElements(snapnodes(elements,snapDistance,snapLocation,node,prereqs))
     }
+}
+const handleRightClick=(event, node) => {
+    event.preventDefault()
+    var index = CISE_Courses.findIndex(x=> x.code===node.id)
+    console.log(index)
+    let prereqs=new Set()
+    if(index!==-1)
+    {
+      let temp= CISE_Courses[index].preReqs.slice(0)
+      let prereqs2 = new Set(temp)
+      while(temp.length)
+      {
+          let temp2=temp.pop()
+          let next = CISE_Courses[CISE_Courses.findIndex(x=> x.code===temp2)].preReqs
+          temp=temp.concat(next)
+          prereqs2.add(temp2)
+          
+      }
+      setElements(removeElement(elements,node,prereqs2));
+    }
+    setElements(removeElement(elements,node,prereqs))
 }
 const handleNodeDoubleClick = (event, element) => {
     //put code here for right click info thing
@@ -141,7 +164,7 @@ const handleNodeDoubleClick = (event, element) => {
 
         </div>
         <div style={{height: 700}}>
-              <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDragStop={handleNodeMouseDrop}  onNodeDoubleClick={handleNodeDoubleClick} onPaneClick={() => setButtonPopup(false)} paneMoveable={paneMoveable}>
+              <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDragStop={handleNodeMouseDrop}  onNodeDoubleClick={handleNodeDoubleClick} onNodeContextMenu={handleRightClick} onPaneClick={() => setButtonPopup(false)} paneMoveable={paneMoveable}>
               <Controls showFitView={false} showInteractive={false} showZoom={false}/>
               <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(0).x}}/>
               <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(6).x}}/>
