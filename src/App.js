@@ -23,33 +23,48 @@ const [elements,setElements]=useState([]);
 const [inputText,setInputText] = useState("");
 const [paneMoveable, setPaneMoveable] = useState(false);
 const [zoom, setZoom] = useState(false);
+//const
+const [highlight, setHighlight]=useState(false);
+const [highlightedNode, setHighlightedNode]=useState("");
+const [drag,setDrag]=useState(false);
 
 const handleNodeMouseEnter = (event,node) => {
-    let prereqs=new Set()
-    var index = CISE_Courses.findIndex(x=> x.code===node.id)
-    if(index!==-1)
+    if(!highlight)
     {
-      let temp= CISE_Courses[index].preReqs.slice(0)
-      while(temp.length)
-      {
-          let temp2=temp.pop()
-          var index2=CISE_Courses.findIndex(x=> x.code===temp2)
-          if(index2!==-1)
-          {
-            let next= CISE_Courses[index2].preReqs
-            temp=temp.concat(next)
-          }
-          prereqs.add(temp2)
-      }
-      setElements(highlightnodes(elements,prereqs))
+        let prereqs=new Set()
+        var index = CISE_Courses.findIndex(x=> x.code===node.id)
+        if(index!==-1)
+        {
+            let temp= CISE_Courses[index].preReqs.slice(0)
+            while(temp.length)
+            {
+                let temp2=temp.pop()
+                var index2=CISE_Courses.findIndex(x=> x.code===temp2)
+                if(index2!==-1)
+                {
+                    let next= CISE_Courses[index2].preReqs
+                    temp=temp.concat(next)
+                }
+            prereqs.add(temp2)
+            }
+            setElements(highlightnodes(elements,prereqs))
+            setHighlight(true)
+            setHighlightedNode(node.id)
+
+        }
+        
+        
     }
 }
 const handleNodeMouseLeave = (event,node) => {
   var index = CISE_Courses.findIndex(x=> x.code===node.id)
-  if(index!==-1)
+  if(highlightedNode===node.id&&!drag&&index!==-1)
   {
-    var prereqs= new Set(CISE_Courses[index].preReqs)
-    setElements(highlightnodes(elements,prereqs));
+      var prereqs= new Set(CISE_Courses[index].preReqs)
+      setElements(highlightnodes(elements,prereqs));
+      setHighlightedNode("")
+      setHighlight(false)
+      
   }
 }
 function doSomething(elements,node)
@@ -87,6 +102,7 @@ const handleNodeMouseDrop = (event, node) => {
       }
     }
     setElements(snapnodes(elements,snapDistance,snapLocation,node,prereqs))
+    setDrag(false);
 }
 const handleRightClick=(event, node) => {
     event.preventDefault()
@@ -110,6 +126,9 @@ const handleRightClick=(event, node) => {
       }
     }
     setElements(removeElement(elements,node,prereqs))
+}
+const checkDrag = (event,element) => {
+    setDrag(true)
 }
 const handleNodeDoubleClick = (event, element) => {
     //put code here for right click info thing
@@ -167,7 +186,7 @@ const handleNodeDoubleClick = (event, element) => {
 
         </div>
         <div style={{height: 700}}>
-              <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDragStop={handleNodeMouseDrop}  onNodeDoubleClick={handleNodeDoubleClick} onNodeContextMenu={handleRightClick} onPaneClick={() => setButtonPopup(false)} paneMoveable={paneMoveable} zoomOnDoubleClick={zoom} zoomOnPinch={zoom} zoomOnScroll={zoom}>
+              <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDrag={checkDrag} onNodeDragStop={handleNodeMouseDrop}  onNodeDoubleClick={handleNodeDoubleClick} onNodeContextMenu={handleRightClick} onPaneClick={() => setButtonPopup(false)} paneMoveable={paneMoveable} zoomOnDoubleClick={zoom} zoomOnPinch={zoom} zoomOnScroll={zoom}>
               <Controls showFitView={false} showInteractive={false} showZoom={false}/>
               <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(0).x}}/>
               <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(6).x}}/>
