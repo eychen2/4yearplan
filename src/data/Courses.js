@@ -380,7 +380,7 @@ const Courses = [
         name:"CS Teaching & Learning",
         credit:3,
         description:"Covers basic pedagogy, especially as it relates to computer science and engineering, and covers three fundamental elements in education: learning environment, educational theory, and educational practice as approached to engineering-specific training.",
-        preReqs:["COP 3502"],
+        preReqs:["COP 3502C"],
         yearReq: "-"
     }
 
