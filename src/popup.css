@@ -1,11 +1,12 @@
 /* Popup style */
 .popup-box {
-    position: fixed;
+    position: absolute;
     background: #00000050;
     width: 100%;
     height: 100vh;
     top: 0;
     left: 0;
+    z-index: 10;
 
     display: flex;
     justify-content: center;
@@ -25,4 +26,20 @@
     border: 1px solid #999;
     overflow: auto;
     text-align: left;
+}
+
+.box .close-icon {
+    content: 'x';
+    cursor: pointer;
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    background: #ededed;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    line-height: 20px;
+    text-align: center;
+    border: 1px solid #999;
+    font-size: 20px;
 }

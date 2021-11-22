@@ -22,7 +22,7 @@ const [buttonPopup, setButtonPopup] = useState(false);
 const [elements,setElements]=useState([]);
 const [inputText,setInputText] = useState("");
 const [paneMoveable, setPaneMoveable] = useState(false);
-
+const [zoom, setZoom] = useState(false);
 
 const handleNodeMouseEnter = (event,node) => {
   var index = CISE_Courses.findIndex(x=> x.code===node.id)
@@ -164,7 +164,7 @@ const handleNodeDoubleClick = (event, element) => {
 
         </div>
         <div style={{height: 700}}>
-              <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDragStop={handleNodeMouseDrop}  onNodeDoubleClick={handleNodeDoubleClick} onNodeContextMenu={handleRightClick} onPaneClick={() => setButtonPopup(false)} paneMoveable={paneMoveable}>
+              <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDragStop={handleNodeMouseDrop}  onNodeDoubleClick={handleNodeDoubleClick} onNodeContextMenu={handleRightClick} onPaneClick={() => setButtonPopup(false)} paneMoveable={paneMoveable} zoomOnDoubleClick={zoom} zoomOnPinch={zoom} zoomOnScroll={zoom}>
               <Controls showFitView={false} showInteractive={false} showZoom={false}/>
               <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(0).x}}/>
               <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(6).x}}/>
