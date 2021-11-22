@@ -25,21 +25,24 @@ const [paneMoveable, setPaneMoveable] = useState(false);
 const [zoom, setZoom] = useState(false);
 
 const handleNodeMouseEnter = (event,node) => {
-  var index = CISE_Courses.findIndex(x=> x.code===node.id)
-  if(index!==-1)
-  {
-    let temp= CISE_Courses[index].preReqs.slice(0)
-    let prereqs = new Set(temp)
-    while(temp.length)
+    let prereqs=new Set()
+    var index = CISE_Courses.findIndex(x=> x.code===node.id)
+    if(index!==-1)
     {
-        let temp2=temp.pop()
-        let next = CISE_Courses[CISE_Courses.findIndex(x=> x.code===temp2)].preReqs
-        temp=temp.concat(next)
-        prereqs.add(temp2)
-        
+      let temp= CISE_Courses[index].preReqs.slice(0)
+      while(temp.length)
+      {
+          let temp2=temp.pop()
+          var index2=CISE_Courses.findIndex(x=> x.code===temp2)
+          if(index2!==-1)
+          {
+            let next= CISE_Courses[index2].preReqs
+            temp=temp.concat(next)
+          }
+          prereqs.add(temp2)
+      }
+      setElements(highlightnodes(elements,prereqs))
     }
-    setElements(highlightnodes(elements,prereqs));
-  }
 }
 const handleNodeMouseLeave = (event,node) => {
   var index = CISE_Courses.findIndex(x=> x.code===node.id)
@@ -66,26 +69,24 @@ function doSomething(elements,node)
 }
 const handleNodeMouseDrop = (event, node) => {
     setElements(doSomething(elements,node))
+    let prereqs=new Set()
     var index = CISE_Courses.findIndex(x=> x.code===node.id)
-    let prereqs= new Set()
     if(index!==-1)
     {
       let temp= CISE_Courses[index].preReqs.slice(0)
-      let prereqs2 = new Set(temp)
       while(temp.length)
       {
           let temp2=temp.pop()
-          let next = CISE_Courses[CISE_Courses.findIndex(x=> x.code===temp2)].preReqs
-          temp=temp.concat(next)
-          prereqs2.add(temp2)
-          
+          var index2=CISE_Courses.findIndex(x=> x.code===temp2)
+          if(index2!==-1)
+          {
+            let next= CISE_Courses[index2].preReqs
+            temp=temp.concat(next)
+          }
+          prereqs.add(temp2)
       }
-      setElements(snapnodes(elements,snapDistance,snapLocation,node,prereqs2))
     }
-    else
-    {
-        setElements(snapnodes(elements,snapDistance,snapLocation,node,prereqs))
-    }
+    setElements(snapnodes(elements,snapDistance,snapLocation,node,prereqs))
 }
 const handleRightClick=(event, node) => {
     event.preventDefault()
@@ -95,16 +96,18 @@ const handleRightClick=(event, node) => {
     if(index!==-1)
     {
       let temp= CISE_Courses[index].preReqs.slice(0)
-      let prereqs2 = new Set(temp)
       while(temp.length)
       {
           let temp2=temp.pop()
-          let next = CISE_Courses[CISE_Courses.findIndex(x=> x.code===temp2)].preReqs
-          temp=temp.concat(next)
-          prereqs2.add(temp2)
+          var index2=CISE_Courses.findIndex(x=> x.code===temp2)
+          if(index2!==-1)
+          {
+            let next= CISE_Courses[index2].preReqs
+            temp=temp.concat(next)
+          }
+          prereqs.add(temp2)
           
       }
-      setElements(removeElement(elements,node,prereqs2));
     }
     setElements(removeElement(elements,node,prereqs))
 }
