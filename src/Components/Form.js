@@ -12,6 +12,7 @@ const Form = ({setInputText, inputText, elements,setElements}) =>{
         e.preventDefault();
         var index = elements.findIndex(x=>x.id===inputs.code)
         if(index===-1)
+        {
             setElements([...elements, {id: inputs.code, type:'input',data: {label: inputs.code},position:{x:1250,y:200},style:{height: 10, width:80}}]);
             CISE_Courses.push({
                 code: inputs.code,
@@ -21,7 +22,8 @@ const Form = ({setInputText, inputText, elements,setElements}) =>{
                 preReqs: [],
                 yearReq: "-"
             })
-        setInputText("");
+        }
+        setInputs({code: "", num: ""})
     };
     return(
         <form>
