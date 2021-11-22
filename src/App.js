@@ -9,7 +9,7 @@ import removeElement from './functions/removeElement.js'
 import Popup from "./popup.js";
 
 const CISE_Courses=require('./data/Courses.js');
-const initialElements=require('./data/InitialElements');
+var initialElements=require('./data/InitialElements');
 const snapLocation=require('./data/SnapLocations.js');
 const snapDistance=[]
 const courseInfo = []

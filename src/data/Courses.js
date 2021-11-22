@@ -1,4 +1,4 @@
-const Courses = [
+var Courses = [
     {
         code: "ENC 1101",
         name: "Expository and Argumentative Writing 3 Credits",
