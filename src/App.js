@@ -126,6 +126,7 @@ const handleRightClick=(event, node) => {
       }
     }
     setElements(removeElement(elements,node,prereqs))
+    setHighlight(false)
 }
 const checkDrag = (event,element) => {
     setDrag(true)
