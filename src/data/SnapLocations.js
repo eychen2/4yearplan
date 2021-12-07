@@ -1,227 +1,228 @@
+const center = window.innerWidth/2 - 50;
 const SnapLocations=[
     //column 1
     {
-        x:0, //0
+        x:center - 500, //0
         y:100
     },
     {
-        x:0,
+        x:center - 500,
         y:150
     },
     {
-        x:0,
+        x:center - 500,
         y:200
     },
     {
-        x:0,
+        x:center - 500,
         y:250
     },
     {
-        x:0,
+        x:center - 500,
         y:300
     },
     {
-        x:0,
+        x:center - 500,
         y:350
     },
     //column 2
     {
-        x:125, //5
+        x:center - 375, //6
         y:100
     },
     {
-        x:125,
+        x:center - 375,
         y:150
     },
     {
-        x:125,
+        x:center - 375,
         y:200
     },
     {
-        x:125,
+        x:center - 375,
         y:250
     },
     {
-        x:125,
+        x:center - 375,
         y:300
     },
     {
-        x:125,
+        x:center - 375,
         y:350
     },
     //column 3
     {
-        x:250, //10
+        x:center - 250, //12
         y:100
     },
     {
-        x:250,
+        x:center - 250,
         y:150
     },
     {
-        x:250,
+        x:center - 250,
         y:200
     },
     {
-        x:250,
+        x:center - 250,
         y:250
     },
     {
-        x:250,
+        x:center - 250,
         y:300
     },
     {
-        x:250, //10
+        x:center - 250,
         y:350
     },
     //column 4
     {
-        x:375, //15
+        x:center - 125, //16
         y:100
     },
     {
-        x:375,
+        x:center - 125,
         y:150
     },
     {
-        x:375,
+        x:center - 125,
         y:200
     },
     {
-        x:375,
+        x:center - 125,
         y:250
     },
     {
-        x:375,
+        x:center - 125,
         y:300
     },
     {
-        x:375,
+        x:center - 125,
         y:350
     },
     //column 5
     {
-        x:500, //20
+        x: center, //24
         y:100
     },
     {
-        x:500,
+        x:center,
         y:150
     },
     {
-        x:500,
+        x:center,
         y:200
     },
     {
-        x:500,
+        x:center,
         y:250
     },
     {
-        x:500,
+        x:center,
         y:300
     },
     {
-        x:500,
+        x:center,
         y:350
     },
     //column 6
     {
-        x:625,
+        x:center + 125, //30
         y:100
     },
     {
-        x:625,
+        x:center + 125,
         y:150
     },
     {
-        x:625,
+        x:center + 125,
         y:200
     },
     {
-        x:625,
+        x:center + 125,
         y:250
     },
     {
-        x:625,
+        x:center + 125,
         y:300
     },
     {
-        x:625,
+        x:center + 125,
         y:350
     },
     //column 7
     {
-        x:750,
+        x:center + 250, //36
         y:100
     },
     {
-        x:750,
+        x:center + 250,
         y:150
     },
     {
-        x:750,
+        x:center + 250,
         y:200
     },
     {
-        x:750,
+        x:center + 250,
         y:250
     },
     {
-        x:750,
+        x:center + 250,
         y:300
     },
     {
-        x:750,
+        x:center + 250,
         y:350
     },
     //column 8
     {
-        x:875,
+        x:center + 375, //42
         y:100
     },
     {
-        x:875,
+        x:center + 375,
         y:150
     },
     {
-        x:875,
+        x:center + 375,
         y:200
     },
     {
-        x:875,
+        x:center + 375,
         y:250
     },
     {
-        x:875,
+        x:center + 375,
         y:300
     },
     {
-        x:875,
+        x:center + 375,
         y:350
     },
     //column 9
     {
-        x:1000,
+        x:center + 500, //48
         y:100
     },
     {
-        x:1000,
+        x:center + 500,
         y:150
     },
     {
-        x:1000,
+        x:center + 500,
         y:200
     },
     {
-        x:1000,
+        x:center + 500,
         y:250
     },
     {
-        x:1000,
+        x:center + 500,
         y:300
     },
     {
-        x:1000,
+        x:center + 500,
         y:350
     },
 ]
