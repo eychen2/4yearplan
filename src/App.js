@@ -1,4 +1,4 @@
-import React,{ useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css'
 import ReactFlow, {Controls} from 'react-flow-renderer';
 import Form from './Components/Form'
@@ -17,7 +17,7 @@ const courseInfo = []
 const App = () => {
 //pop up const
 const [buttonPopup, setButtonPopup] = useState(false);
-
+const [startPopup, setStartPopup] = useState(true);
 //node const
 const [elements,setElements]=useState([]);
 const [inputText,setInputText] = useState("");
@@ -52,8 +52,6 @@ const handleNodeMouseEnter = (event,node) => {
             setHighlightedNode(node.id)
 
         }
-        
-        
     }
 }
 const handleNodeMouseLeave = (event,node) => {
@@ -150,6 +148,21 @@ const handleNodeDoubleClick = (event, element) => {
     }
     setButtonPopup(true);
 }
+const UpdateNode = (event, element) => {
+    setElements((els) =>
+        els.map((el) => {
+            if (el.id === element.id) {
+                if(el.data.label.search("[✓]") === -1){
+                    el.data = {...el.data, label: el.data.label + " [✓]"}
+                }
+                else{
+                    el.data = {...el.data, label: el.data.label.replace(" [✓]", "")}
+                }
+            }
+            return el;
+        })
+    );
+}
     const clickCSE = () => {
         console.log('CSE');
         setElements(initialElements);
@@ -197,7 +210,7 @@ const handleNodeDoubleClick = (event, element) => {
               <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(48).x+35}}> Fall </div>
           </div>
         <div style={{height: 700}}>
-              <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDrag={checkDrag} onNodeDragStop={handleNodeMouseDrop}  onNodeDoubleClick={handleNodeDoubleClick} onNodeContextMenu={handleRightClick} onPaneClick={() => setButtonPopup(false)} paneMoveable={paneMoveable} zoomOnDoubleClick={zoom} zoomOnPinch={zoom} zoomOnScroll={zoom}>
+              <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDrag={checkDrag} onNodeDragStop={handleNodeMouseDrop} onNodeDoubleClick={handleNodeDoubleClick} onElementClick={UpdateNode} onNodeContextMenu={handleRightClick} onPaneClick={() => setButtonPopup(false)} paneMoveable={paneMoveable} zoomOnDoubleClick={zoom} zoomOnPinch={zoom} zoomOnScroll={zoom}>
               <Controls showFitView={false} showInteractive={false} showZoom={false}/>
               <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(0).x}}/>
               <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(6).x}}/>
