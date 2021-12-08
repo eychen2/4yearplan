@@ -245,6 +245,15 @@ const UpdateNode = (event, element) => {
                   )
               })}
           </Popup>
+          <Popup  trigger={startPopup} setTrigger={setStartPopup}>
+              <h3>Instructions</h3>
+              <li>Drag and drop courses into semesters to create your own custom 4 year plan</li>
+              <li>Hover over a course to see its prerequisites</li>
+              <li>Left click a node to mark a course as completed</li>
+              <li>Double click a node to get more information about the course</li>
+              <li>Right click a node to remove a course</li>
+              <p></p>
+          </Popup>
       </div>
   );
 }
