@@ -100,7 +100,7 @@ var Courses = [
         name: "Programming Fundamentals 1",
         credit: 4,
         description: "First course of a two-semester introductory sequence for those planning further study in computer science, digital arts and sciences or computer engineering. Concepts of computer science and the process of computer programming, including object-oriented programming, procedural and data abstraction and program modularity.",
-        preReqs: ["MAC 2311"],
+        preReqs: [],
         yearReq: "-"
     },
     {
