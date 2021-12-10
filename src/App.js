@@ -7,6 +7,7 @@ import snapnodes from './functions/snapnodes.js'
 import getcreds from './functions/getcreds.js'
 import removeElement from './functions/removeElement.js'
 import Popup from "./popup.js";
+import logo from "./uf-gator-logo.png";
 
 const CISE_Courses=require('./data/Courses.js');
 var initialElements=require('./data/InitialElements');
@@ -178,36 +179,33 @@ const UpdateNode = (event, element) => {
 
   return (
       <div className="App">
+          <header><img src={logo} alt="Logo"></img>University of Florida</header>
           <p></p>
-          <button onClick={clickCSE}>Computer Science (CSE)</button>
-          <p></p>
-          <button onClick={clickCSC}>Computer Science (CSC)</button>
-          <p></p>
-          <button onClick={clickDAS}>Digital Arts and Sciences (DAS)</button>
+          <button onClick={clickCSE}>Computer Science (CSE)</button><button onClick={clickCSC}>Computer Science (CSC)</button><button onClick={clickDAS}>Digital Arts and Sciences (DAS)</button>
           <p></p>
         <Form setInputText={setInputText} inputText={inputText} elements={elements} setElements={setElements}/>
         <p></p>
         <div className="creds">
-            <div className="element" style={{position:'absolute', top:250,left:snapLocation.at(0).x+15}}>Credits: {getcreds(elements,CISE_Courses,snapLocation.at(0).x)}</div>
-            <div className="element" style={{position:'absolute', top:250,left:snapLocation.at(6).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(6).x)}</div>
-            <div className="element" style={{position:'absolute', top:250,left:snapLocation.at(12).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(12).x)}</div>
-            <div className="element" style={{position:'absolute', top:250,left:snapLocation.at(18).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(18).x)}</div>
-            <div className="element" style={{position:'absolute', top:250,left:snapLocation.at(24).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(24).x)}</div>
-            <div className="element" style={{position:'absolute', top:250,left:snapLocation.at(30).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(30).x)}</div>
-            <div className="element" style={{position:'absolute', top:250,left:snapLocation.at(36).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(36).x)}</div>
-            <div className="element" style={{position:'absolute', top:250,left:snapLocation.at(42).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(42).x)}</div>
-            <div className="element" style={{position:'absolute', top:250,left:snapLocation.at(48).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(48).x)}</div>
+            <div className="element" style={{position:'absolute', top:240,left:snapLocation.at(0).x+15}}>Credits: {getcreds(elements,CISE_Courses,snapLocation.at(0).x)}</div>
+            <div className="element" style={{position:'absolute', top:240,left:snapLocation.at(6).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(6).x)}</div>
+            <div className="element" style={{position:'absolute', top:240,left:snapLocation.at(12).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(12).x)}</div>
+            <div className="element" style={{position:'absolute', top:240,left:snapLocation.at(18).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(18).x)}</div>
+            <div className="element" style={{position:'absolute', top:240,left:snapLocation.at(24).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(24).x)}</div>
+            <div className="element" style={{position:'absolute', top:240,left:snapLocation.at(30).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(30).x)}</div>
+            <div className="element" style={{position:'absolute', top:240,left:snapLocation.at(36).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(36).x)}</div>
+            <div className="element" style={{position:'absolute', top:240,left:snapLocation.at(42).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(42).x)}</div>
+            <div className="element" style={{position:'absolute', top:240,left:snapLocation.at(48).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(48).x)}</div>
         </div>
           <div className="semesters">
-              <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(0).x+35}}> Fall </div>
-              <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(6).x+25}}> Spring </div>
-              <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(12).x+35}}> Fall </div>
-              <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(18).x+25}}> Spring </div>
-              <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(24).x+35}}> Fall </div>
-              <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(30).x+25}}> Spring </div>
-              <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(36).x+35}}> Fall </div>
-              <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(42).x+25}}> Spring </div>
-              <div className="element" style={{position:'absolute', top:200,left:snapLocation.at(48).x+35}}> Fall </div>
+              <div className="element" style={{position:'absolute', top:190,left:snapLocation.at(0).x+35}}> Fall </div>
+              <div className="element" style={{position:'absolute', top:190,left:snapLocation.at(6).x+25}}> Spring </div>
+              <div className="element" style={{position:'absolute', top:190,left:snapLocation.at(12).x+35}}> Fall </div>
+              <div className="element" style={{position:'absolute', top:190,left:snapLocation.at(18).x+25}}> Spring </div>
+              <div className="element" style={{position:'absolute', top:190,left:snapLocation.at(24).x+35}}> Fall </div>
+              <div className="element" style={{position:'absolute', top:190,left:snapLocation.at(30).x+25}}> Spring </div>
+              <div className="element" style={{position:'absolute', top:190,left:snapLocation.at(36).x+35}}> Fall </div>
+              <div className="element" style={{position:'absolute', top:190,left:snapLocation.at(42).x+25}}> Spring </div>
+              <div className="element" style={{position:'absolute', top:190,left:snapLocation.at(48).x+35}}> Fall </div>
           </div>
         <div style={{height: 700}}>
               <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDrag={checkDrag} onNodeDragStop={handleNodeMouseDrop} onNodeDoubleClick={handleNodeDoubleClick} onElementClick={UpdateNode} onNodeContextMenu={handleRightClick} onPaneClick={() => setButtonPopup(false)} paneMoveable={paneMoveable} zoomOnDoubleClick={zoom} zoomOnPinch={zoom} zoomOnScroll={zoom}>
@@ -223,6 +221,7 @@ const UpdateNode = (event, element) => {
               <div className="rectangle" style={{position:'absolute', top:100,left:snapLocation.at(48).x}}/>
               </ReactFlow>
         </div>
+        <footer>Footer Text</footer>
          <Popup  trigger={buttonPopup} setTrigger={setButtonPopup}>
               {courseInfo.map(function(c, hd){
                   return (
