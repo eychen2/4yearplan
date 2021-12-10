@@ -186,26 +186,26 @@ const UpdateNode = (event, element) => {
         <Form setInputText={setInputText} inputText={inputText} elements={elements} setElements={setElements}/>
         <p></p>
         <div className="creds">
-            <div className="element" style={{position:'absolute', top:225,left:snapLocation.at(0).x+15}}>Credits: {getcreds(elements,CISE_Courses,snapLocation.at(0).x)}</div>
-            <div className="element" style={{position:'absolute', top:225,left:snapLocation.at(6).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(6).x)}</div>
-            <div className="element" style={{position:'absolute', top:225,left:snapLocation.at(12).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(12).x)}</div>
-            <div className="element" style={{position:'absolute', top:225,left:snapLocation.at(18).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(18).x)}</div>
-            <div className="element" style={{position:'absolute', top:225,left:snapLocation.at(24).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(24).x)}</div>
-            <div className="element" style={{position:'absolute', top:225,left:snapLocation.at(30).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(30).x)}</div>
-            <div className="element" style={{position:'absolute', top:225,left:snapLocation.at(36).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(36).x)}</div>
-            <div className="element" style={{position:'absolute', top:225,left:snapLocation.at(42).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(42).x)}</div>
-            <div className="element" style={{position:'absolute', top:225,left:snapLocation.at(48).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(48).x)}</div>
+            <div className="element" style={{position:'absolute', top:240,left:snapLocation.at(0).x+15}}>Credits: {getcreds(elements,CISE_Courses,snapLocation.at(0).x)}</div>
+            <div className="element" style={{position:'absolute', top:240,left:snapLocation.at(6).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(6).x)}</div>
+            <div className="element" style={{position:'absolute', top:240,left:snapLocation.at(12).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(12).x)}</div>
+            <div className="element" style={{position:'absolute', top:240,left:snapLocation.at(18).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(18).x)}</div>
+            <div className="element" style={{position:'absolute', top:240,left:snapLocation.at(24).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(24).x)}</div>
+            <div className="element" style={{position:'absolute', top:240,left:snapLocation.at(30).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(30).x)}</div>
+            <div className="element" style={{position:'absolute', top:240,left:snapLocation.at(36).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(36).x)}</div>
+            <div className="element" style={{position:'absolute', top:240,left:snapLocation.at(42).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(42).x)}</div>
+            <div className="element" style={{position:'absolute', top:240,left:snapLocation.at(48).x+15}}>Credits:{getcreds(elements,CISE_Courses,snapLocation.at(48).x)}</div>
         </div>
           <div className="semesters">
-              <div className="element" style={{position:'absolute', top:175,left:snapLocation.at(0).x+35}}> Fall </div>
-              <div className="element" style={{position:'absolute', top:175,left:snapLocation.at(6).x+25}}> Spring </div>
-              <div className="element" style={{position:'absolute', top:175,left:snapLocation.at(12).x+35}}> Fall </div>
-              <div className="element" style={{position:'absolute', top:175,left:snapLocation.at(18).x+25}}> Spring </div>
-              <div className="element" style={{position:'absolute', top:175,left:snapLocation.at(24).x+35}}> Fall </div>
-              <div className="element" style={{position:'absolute', top:175,left:snapLocation.at(30).x+25}}> Spring </div>
-              <div className="element" style={{position:'absolute', top:175,left:snapLocation.at(36).x+35}}> Fall </div>
-              <div className="element" style={{position:'absolute', top:175,left:snapLocation.at(42).x+25}}> Spring </div>
-              <div className="element" style={{position:'absolute', top:175,left:snapLocation.at(48).x+35}}> Fall </div>
+              <div className="element" style={{position:'absolute', top:190,left:snapLocation.at(0).x+35}}> Fall </div>
+              <div className="element" style={{position:'absolute', top:190,left:snapLocation.at(6).x+25}}> Spring </div>
+              <div className="element" style={{position:'absolute', top:190,left:snapLocation.at(12).x+35}}> Fall </div>
+              <div className="element" style={{position:'absolute', top:190,left:snapLocation.at(18).x+25}}> Spring </div>
+              <div className="element" style={{position:'absolute', top:190,left:snapLocation.at(24).x+35}}> Fall </div>
+              <div className="element" style={{position:'absolute', top:190,left:snapLocation.at(30).x+25}}> Spring </div>
+              <div className="element" style={{position:'absolute', top:190,left:snapLocation.at(36).x+35}}> Fall </div>
+              <div className="element" style={{position:'absolute', top:190,left:snapLocation.at(42).x+25}}> Spring </div>
+              <div className="element" style={{position:'absolute', top:190,left:snapLocation.at(48).x+35}}> Fall </div>
           </div>
         <div style={{height: 700}}>
               <ReactFlow elements={elements} onNodeMouseEnter={handleNodeMouseEnter} onNodeMouseLeave={handleNodeMouseLeave} onNodeDrag={checkDrag} onNodeDragStop={handleNodeMouseDrop} onNodeDoubleClick={handleNodeDoubleClick} onElementClick={UpdateNode} onNodeContextMenu={handleRightClick} onPaneClick={() => setButtonPopup(false)} paneMoveable={paneMoveable} zoomOnDoubleClick={zoom} zoomOnPinch={zoom} zoomOnScroll={zoom}>
